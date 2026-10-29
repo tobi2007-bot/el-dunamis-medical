@@ -1,0 +1,8 @@
+server/.env
+server/*.db
+server/*.db-wal
+server/*.db-shm
+server/uploads/
+node_modules/
+images/media-uploads/*
+!images/media-uploads/.gitkeep

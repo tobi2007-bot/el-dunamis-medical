@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./media.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Media — EL DUNAMIS Medical Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="../home/index.html" class="nav-brand">
+    <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+    <span class="nav-title">EL <span>DUNAMIS</span> <span class="nav-med">MEDICAL CENTRE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../home/index.html#services">Services</a>
+    <a href="../home/index.html#departments">Departments</a>
+    <div class="nav-dropdown" id="doctors-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('doctors-dropdown').classList.toggle('open');">Doctors</a>
+      <div class="dropdown-menu">
+        <a href="../home/index.html#medical-director">
+          <span class="dm-icon">🩺</span>
+          <span class="dm-label">Medical Director<small>Leadership & Vision</small></span>
+        </a>
+        <a href="../home/index.html#doctors">
+          <span class="dm-icon">👨‍⚕️</span>
+          <span class="dm-label">Our Doctors<small>Expert Doctors</small></span>
+        </a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="clinic-days-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('clinic-days-dropdown').classList.toggle('open');">Clinic Days</a>
+      <div class="dropdown-menu">
+        <a href="../home/index.html#immunization">
+          <span class="dm-icon">💉</span>
+          <span class="dm-label">Immunization Clinic<small>Every Tuesday</small></span>
+        </a>
+        <a href="../home/index.html#antenatal">
+          <span class="dm-icon">🤰</span>
+          <span class="dm-label">Antenatal Clinic<small>Every Thursday</small></span>
+        </a>
+      </div>
+    </div>
+    <a href="./media.html" class="active">Media</a>
+    <a href="../leave-a-review/leave-a-review.html">Feedbacks</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-emergency"><div class="emergency-dot"></div> 09024543941</div>
+    <a href="../schedule-a-visit/schedule-a-visit.html" class="nav-cta">Book Appointment</a>
+    <button class="hamburger" id="hamburger-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="../home/index.html#services">Services</a>
+  <a href="../schedule-a-visit/schedule-a-visit.html">Consultation</a>
+  <a href="../home/index.html#departments">Departments</a>
+  <a href="../home/index.html#medical-director">🩺 Medical Director</a>
+  <a href="../home/index.html#doctors">Our Doctors</a>
+  <a href="../home/index.html#immunization">💉 Immunization Clinic — Tuesday</a>
+  <a href="../home/index.html#antenatal">🤰 Antenatal Clinic — Thursday</a>
+  <a href="./media.html" style="color:var(--gold);font-weight:600">📸 Media</a>
+  <a href="../leave-a-review/leave-a-review.html">📝 Feedbacks</a>
+  <a href="../home/index.html#contact">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">News & Media</div>
+    <h1>Our <em>Stories,</em> Our Impact</h1>
+    <p>Stay informed with the latest news, health announcements, gallery highlights, and videos from EL DUNAMIS Medical Centre.</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="switchTab('announcements', this)">📢 Announcements</button>
+    <button class="filter-btn" onclick="switchTab('news', this)">📰 News & Press</button>
+    <button class="filter-btn" onclick="switchTab('gallery', this)">🖼 Photo Gallery</button>
+    <button class="filter-btn" onclick="switchTab('videos', this)">▶️ Videos</button>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENTS TAB -->
+<div id="tab-announcements" class="tab-content active">
+  <div class="media-section">
+    <div class="section-label">Latest Updates</div>
+    <div class="section-title">Announcements & <em>Notices</em></div>
+    <div class="announcements-list" id="announcements-list">
+      <p class="media-loading">Loading announcements…</p>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS TAB -->
+<div id="tab-news" class="tab-content">
+  <div class="media-section">
+    <div class="section-label">Press & Publications</div>
+    <div class="section-title">Latest <em>News</em></div>
+    <div class="news-grid" id="news-grid">
+      <p class="media-loading">Loading news…</p>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY TAB -->
+<div id="tab-gallery" class="tab-content">
+  <div class="media-section">
+    <div class="section-label">Photography</div>
+    <div class="section-title">Photo <em>Gallery</em></div>
+    <div class="gallery-grid" id="gallery-grid">
+      <p class="media-loading">Loading gallery…</p>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-size:13px;color:var(--text-muted)">
+      To submit photos for the gallery, email <a href="mailto:Eldunamismedicalcentre2020@gmail.com" style="color:var(--text);font-weight:600">Eldunamismedicalcentre2020@gmail.com</a>
+    </p>
+  </div>
+</div>
+
+<!-- VIDEOS TAB -->
+<div id="tab-videos" class="tab-content">
+  <div class="media-section">
+    <div class="section-label">Video Library</div>
+    <div class="section-title">Watch & <em>Learn</em></div>
+    <div class="videos-grid" id="videos-grid">
+      <p class="media-loading">Loading videos…</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRESS CONTACT BANNER -->
+<div class="press-banner">
+  <div class="press-banner-text">
+    <div class="label">Media Enquiries</div>
+    <h3>Are you a journalist or content creator?</h3>
+    <p>Reach out to our communications team for interview requests and official statements.</p>
+  </div>
+  <div class="press-actions">
+    <a href="mailto:Eldunamismedicalcentre2020@gmail.com" class="btn-gold">📧 Contact Media Team</a>
+    <a href="tel:09024543941" class="btn-ghost">📞 09024543941</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-row">
+        <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+        <div>
+          <div class="footer-brand-name">EL <span>DUNAMIS</span></div>
+          <div class="footer-tagline">MEDICAL CENTRE</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../home/index.html">Home</a>
+      <a href="../home/index.html#services">Services</a>
+      <a href="../home/index.html#doctors">Doctors</a>
+      <a href="../schedule-a-visit/schedule-a-visit.html">Book Appointment</a>
+      <a href="./media.html">Media</a>
+      <a href="../home/index.html#contact">Contact</a>
+    </div>
+    <div class="footer-social" style="display:flex;gap:16px;">
+      <a href="https://www.facebook.com/share/1AzaiMvaR2/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:14px;">📘 Facebook</a>
+      <a href="https://www.instagram.com/eldunamismedicalcentre?igsh=YW8yNGtkeDE4Y3dh" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:14px;">📸 Instagram</a>
+      <a href="https://x.com/eldunamiscentre?t=HFT5cKLT39-XoeuHvAwboA&amp;s=09" target="_blank" rel="noopener" aria-label="Twitter" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:14px;">🐦 Twitter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="copyright-year">2025</span> EL DUNAMIS Medical Centre. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script src="../shared/api.js"></script>
+  <script src="./media.js"></script>
+
+<!-- VIDEO PLAYER MODAL -->
+<div class="video-modal-overlay" id="video-modal-overlay" onclick="if(event.target===this) closeVideoModal()">
+  <div class="video-modal-box">
+    <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+    <div class="video-modal-player" id="video-modal-player"></div>
+    <div class="video-modal-info">
+      <h3 id="video-modal-title"></h3>
+      <p id="video-modal-desc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE LIGHTBOX MODAL -->
+<div class="image-modal-overlay" id="image-modal-overlay" onclick="if(event.target===this) closeImageModal()">
+  <div class="image-modal-box">
+    <button class="image-modal-close" onclick="closeImageModal()">✕</button>
+    <button class="image-modal-nav prev" id="image-modal-prev" onclick="navImageModal(-1)">‹</button>
+    <button class="image-modal-nav next" id="image-modal-next" onclick="navImageModal(1)">›</button>
+    <div class="image-modal-media" id="image-modal-media"></div>
+    <div class="image-modal-caption" id="image-modal-caption"></div>
+  </div>
+</div>
+</body>
+</html>

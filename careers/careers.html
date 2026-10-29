@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../home/index.css" />
+  <link rel="stylesheet" href="./careers.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers — EL DUNAMIS Medical Centre</title>
+<meta name="description" content="Join the EL DUNAMIS Medical Centre team. Explore current openings and submit your CV for consideration." />
+<link rel="icon" type="image/png" href="../images/logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+<nav>
+  <a href="../home/index.html" class="nav-brand">
+    <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+    <span class="nav-title">EL <span>DUNAMIS</span> <span class="nav-med">MEDICAL CENTRE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../home/index.html#services">Services</a>
+    <a href="../home/index.html#departments">Departments</a>
+    <a href="../home/index.html#doctors">Doctors</a>
+    <a href="../leave-a-review/leave-a-review.html">Feedbacks</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-emergency"><div class="emergency-dot"></div> 09024543941</div>
+    <a href="../schedule-a-visit/schedule-a-visit.html" class="nav-cta">Book Appointment</a>
+    <button class="hamburger" id="hamburger-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="../home/index.html#services">Services</a>
+  <a href="../home/index.html#departments">Departments</a>
+  <a href="../home/index.html#doctors">Our Doctors</a>
+  <a href="../home/index.html#about">About</a>
+  <a href="./careers.html">Careers</a>
+  <a href="../home/index.html#contact">Contact</a>
+  <a href="../leave-a-review/leave-a-review.html">📝 Feedbacks</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="label">💼 Careers</div>
+  <h1>Join the <em>EL DUNAMIS</em> Family</h1>
+  <p>We're always looking for dedicated healthcare professionals who share our commitment to compassionate, excellent care.</p>
+</div>
+
+<!-- CAREERS / CV SUBMISSION -->
+<section id="careers" style="padding:60px 5% 100px">
+  <div class="careers-grid">
+    <!-- LEFT: info panel -->
+    <div class="careers-info">
+      <div class="section-label" style="color:var(--gold)">Join Our Team</div>
+      <h2 class="section-title">Submit Your <em>CV</em></h2>
+      <p class="section-sub">We are always looking for dedicated healthcare professionals to join the EL DUNAMIS Medical Centre family. Submit your details and we'll be in touch when a suitable opening arises.</p>
+
+      <div style="margin-top:36px; background:rgba(76, 175, 125,0.10); border:1px solid rgba(37, 99, 235, 0.25); border-radius:var(--radius-lg); padding:24px;">
+        <div style="color:var(--gold);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Current Openings</div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:2;" id="openingsList">
+          Loading current openings…
+        </div>
+        <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">Don't see your role? Submit your CV anyway — we keep all applications on file.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="cv-form-card">
+      <div class="form-title">Career Application</div>
+      <div class="form-sub">All submissions are treated with strict confidentiality.</div>
+
+      <div id="cv-form-fields">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="cv-name" placeholder="e.g. Adaeze Okonkwo" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="cv-phone" placeholder="e.g. 09024543941" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="cv-email" placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Department of Interest *</label>
+          <select id="cv-dept">
+            <option value="">— Choose a department —</option>
+            <option>General Medicine</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Paediatrics</option>
+            <option>Orthopaedics</option>
+            <option>Maternity &amp; Gynaecology</option>
+            <option>Ophthalmology</option>
+            <option>Dental</option>
+            <option>Physiotherapy</option>
+            <option>Radiology &amp; Diagnostics</option>
+            <option>Pharmacy</option>
+            <option>Nursing</option>
+            <option>Medical Laboratory</option>
+            <option>Administration &amp; Management</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Résumé / CV (PDF or Word) *</label>
+          <input type="file" id="cv-resume-file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onchange="onResumePicked(event)" />
+          <div style="font-size:12px;color:var(--text-muted,#6b7280);margin-top:6px" id="cv-resume-status">PDF or Word document, up to 5MB.</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Highest Degree Obtained *</label>
+            <select id="cv-degree">
+              <option value="">— Select degree —</option>
+              <option>MBBS / MBChB</option>
+              <option>BDS (Dental Surgery)</option>
+              <option>B.Pharm (Pharmacy)</option>
+              <option>B.Sc Nursing</option>
+              <option>B.Sc Medical Laboratory Science</option>
+              <option>B.Sc Physiotherapy</option>
+              <option>B.Sc Radiography</option>
+              <option>FMCP / FWACS / FWACOG</option>
+              <option>MSc / MPH / MBA (Health)</option>
+              <option>PhD / MD (Doctor of Medicine)</option>
+              <option>HND / OND</option>
+              <option>Professional Certificate</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Years of Experience *</label>
+            <select id="cv-exp">
+              <option value="">— Select range —</option>
+              <option>0 – 1 year (Fresh graduate / NYSC)</option>
+              <option>1 – 3 years</option>
+              <option>3 – 5 years</option>
+              <option>5 – 10 years</option>
+              <option>10 – 20 years</option>
+              <option>20+ years (Senior / Consultant)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Brief Cover Note</label>
+          <textarea id="cv-note" placeholder="Tell us a little about yourself, your key skills, and why you'd like to join EL DUNAMIS Medical Centre…" style="min-height:90px;"></textarea>
+        </div>
+
+        <button class="form-submit" onclick="submitCV()">Submit</button>
+        <p class="form-note">📎 Your résumé is attached directly to this application — no need to email it separately.</p>
+      </div>
+
+      <!-- Success state -->
+      <div class="cv-success-box" id="cv-success-box">
+        <div class="cv-check">🎉</div>
+        <h3>Application Received!</h3>
+        <p id="cv-success-msg">Thank you for your interest in EL DUNAMIS Medical Centre. We have received your application, résumé included, and will reach out if a suitable opening arises.</p>
+        <button onclick="resetCVForm()" style="margin-top:20px;background:var(--navy);color:#fff;border:none;padding:12px 28px;border-radius:var(--radius);font-family:var(--ff-body);font-weight:600;cursor:pointer;font-size:14px;">Submit Another</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-bottom">
+    <p>© <span id="copyright-year">2025</span> EL DUNAMIS Medical Centre. All rights reserved.</p>
+    <div style="display:flex;gap:24px;align-items:center">
+      <a href="../home/index.html#contact-form-section">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/api.js"></script>
+<script src="./careers.js"></script>
+</body>
+</html>

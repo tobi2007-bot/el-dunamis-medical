@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./index.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EL DUNAMIS Medical Centre | Trusted Healthcare in Lagos Since 2000</title>
+<meta name="description" content="EL DUNAMIS Medical Centre delivers compassionate, world-class healthcare across 3 Lagos locations — 24/7 emergency care, maternity, pediatrics, and expert doctors. Book a consultation today." />
+<link rel="icon" type="image/png" href="../images/logo.png" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="EL DUNAMIS Medical Centre | Trusted Healthcare in Lagos" />
+<meta property="og:description" content="Compassionate, world-class healthcare since 2000. 24/7 emergency care, expert doctors, 80 HMOs accepted. Book your consultation today." />
+<meta property="og:image" content="../images/logo.png" />
+<meta name="twitter:card" content="summary" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="../images/logo.png" alt="EL DUNAMIS Medical Centre Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+    <span class="nav-title">EL <span>DUNAMIS</span> <span class="nav-med">MEDICAL CENTRE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#departments">Departments</a>
+    <div class="nav-dropdown" id="doctors-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('doctors-dropdown').classList.toggle('open');">Doctors</a>
+      <div class="dropdown-menu">
+        <a href="#medical-director">
+          <span class="dm-icon">🩺</span>
+          <span class="dm-label">Medical Director<small>Leadership & Vision</small></span>
+        </a>
+        <a href="#doctors">
+          <span class="dm-icon">👨‍⚕️</span>
+          <span class="dm-label">Our Doctors<small>Expert Doctors</small></span>
+        </a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="clinic-days-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('clinic-days-dropdown').classList.toggle('open');">Clinic Days</a>
+      <div class="dropdown-menu">
+        <a href="#immunization">
+          <span class="dm-icon">💉</span>
+          <span class="dm-label">Immunization Clinic<small>Every Tuesday</small></span>
+        </a>
+        <a href="#antenatal">
+          <span class="dm-icon">🤰</span>
+          <span class="dm-label">Antenatal Clinic<small>Every Thursday</small></span>
+        </a>
+      </div>
+    </div>
+    <a href="../media/media.html">Media</a>
+    <a href="../leave-a-review/leave-a-review.html">Feedbacks</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-emergency"><div class="emergency-dot"></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#FF6B6B;line-height:1;">Emergency</div><div>09024543941</div></div></div>
+    <a href="../schedule-a-visit/schedule-a-visit.html" class="nav-cta">Book Appointment</a>
+    <button class="hamburger" id="hamburger-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="#services">Services</a>
+  <a href="../schedule-a-visit/schedule-a-visit.html">Consultation</a>
+  <a href="#departments">Departments</a>
+  <a href="#medical-director">🩺 Medical Director</a>
+  <a href="#doctors">Our Doctors</a>
+  <a href="#staff">Our Staff</a>
+  <a href="#immunization">💉 Immunization Clinic — Tuesday</a>
+  <a href="#antenatal">🤰 Antenatal Clinic — Thursday</a>
+  <a href="../media/media.html">📸 Media</a>
+  <a href="../leave-a-review/leave-a-review.html">📝 Feedbacks</a>
+  <a href="#about">About</a>
+  <a href="../careers/careers.html">Careers</a>
+  <a href="#locations">📍 Locations</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-carousel" id="heroCarousel">
+    <div class="hero-carousel-track" id="heroCarouselTrack">
+      <div class="hero-carousel-slide is-active"><img src="../images/hero-carousel/hc-entrance.jpg" alt="EL Dunamis Medical Centre building entrance, with signage reading Clinics & Maternity Hospital" loading="eager" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-facade.jpg" alt="EL Dunamis Medical Centre building, side facade" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-pharmacy.jpg" alt="On-site pharmacy" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-operating.jpg" alt="Fully equipped operating theatre" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-ultrasound.jpg" alt="Ultrasound and diagnostic imaging room" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-incubator.jpg" alt="Neonatal incubator and nursery" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-ward.jpg" alt="Patient ward" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-interior.jpg" alt="Clinic interior" loading="lazy" /></div>
+      <div class="hero-carousel-slide"><img src="../images/hero-carousel/hc-maternity-ward.jpg" alt="Procedure and preparation room" loading="lazy" /></div>
+    </div>
+  </div>
+  <div class="hero-carousel-meta">
+    <div class="hero-carousel-badge">Our Facility</div>
+    <div class="hero-carousel-dots" id="heroCarouselDots"></div>
+  </div>
+  <div class="hero-carousel-progress"><div class="hero-carousel-progress-bar" id="heroCarouselProgressBar"></div></div>
+
+  <div class="hero-grid">
+    <div style="max-width:600px;">
+      <div class="hero-badge">
+        <img src="../images/logo.png" alt="EL DUNAMIS" style="height:28px;width:28px;object-fit:contain;border-radius:50%;border:1px solid var(--gold);background:#fff;padding:2px;" />
+        <span>Trusted Healthcare Since 2000</span>
+      </div>
+      <h1>Welcome to <em>El&#8209;dunamis Medical Centre</em></h1>
+      <p>EL DUNAMIS Medical Centre delivers world-class medical care through compassionate professionals, cutting-edge technology, and a commitment to every patient's well-being.</p>
+      <div class="hero-actions">
+        <a href="../schedule-a-visit/schedule-a-visit.html" class="btn-primary">Book a Consultation</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">60K+</div><div class="lbl">Patients Treated</div></div>
+        <div class="hero-stat" id="hero-doctors-stat" style="display:none"><div class="num" id="hero-doctors-count">0</div><div class="lbl" id="hero-doctors-label">Doctors</div></div>
+        <div class="hero-stat"><div class="num">24/7</div><div class="lbl">Emergency Care</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner" id="marqueeInner">
+    <span class="marquee-item">General Medicine</span>
+    <span class="marquee-item">Emergency Care</span>
+    <span class="marquee-item">Cardiology</span>
+    <span class="marquee-item">Paediatrics</span>
+    <span class="marquee-item">Orthopaedics</span>
+    <span class="marquee-item">Maternity & Obstetrics</span>
+    <span class="marquee-item">Neurology</span>
+    <span class="marquee-item">Radiology & Imaging</span>
+    <span class="marquee-item">Physiotherapy</span>
+    <span class="marquee-item">Ophthalmology</span>
+    <span class="marquee-item">Dental Care</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">General Medicine</span>
+    <span class="marquee-item">Emergency Care</span>
+    <span class="marquee-item">Cardiology</span>
+    <span class="marquee-item">Paediatrics</span>
+    <span class="marquee-item">Orthopaedics</span>
+    <span class="marquee-item">Maternity & Obstetrics</span>
+    <span class="marquee-item">Neurology</span>
+    <span class="marquee-item">Radiology & Imaging</span>
+    <span class="marquee-item">Physiotherapy</span>
+    <span class="marquee-item">Ophthalmology</span>
+    <span class="marquee-item">Dental Care</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-card-main">
+        <h3>Our <span class="black">Vision</span></h3>
+        <p>To be one of the foremost hospitals in Lagos State, impacting lives and improving the general wellbeing of the citizenry.</p>
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1)">
+          <div style="color:#fff;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">Our Mission</div>
+          <ul style="margin:0;padding-left:18px;opacity:0.7;font-size:14px;line-height:1.8;">
+            <li>Using skilled and well-motivated staff.</li>
+            <li>Providing prompt and courteous services.</li>
+            <li>Deploying cutting-edge technology.</li>
+            <li>Providing affordable services to all strata of society.</li>
+            <li>Cooperating with both national and international agencies/bodies to realize government programmes and reach the general populace.</li>
+            <li>Updating staff and clients through regular health talks and continuous medical education.</li>
+            <li>Discharging our duties and responsibilities to clients with empathy.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="about-float">
+        <div class="num">22+</div>
+        <div class="lbl">Years of Service</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Built on <em>Faith & Excellence</em></h2>
+      <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:16px">Founded in 2000 with a vision to make quality healthcare accessible to all, EL DUNAMIS Medical Centre has grown from humble beginnings into a trusted name in healthcare.</p>
+      <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:16px">For us, healthcare is more than treating illnesses; it is about caring for people, restoring hope, and making a lasting difference in lives. Through the dedication of our medical professionals, compassionate service, and commitment to excellence, we continue to put our patients first.</p>
+      <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:28px">Every patient we care for is part of our story. Every life touched reminds us why we began.</p>
+      <div class="values-list">
+        <div class="value-item"><div class="value-dot"></div><div><h5>Compassionate Care</h5><p>Every patient is treated with dignity, respect, and personal attention — because medicine is fundamentally human.</p></div></div>
+        <div class="value-item"><div class="value-dot"></div><div><h5>Clinical Excellence</h5><p>We invest in continuous training, modern equipment, and evidence-based protocols to deliver the best outcomes.</p></div></div>
+        <div class="value-item"><div class="value-dot"></div><div><h5>Integrity & Transparency</h5><p>Honest pricing, clear communication, and no hidden fees — we believe trust is the foundation of good healthcare.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Comprehensive <em>Medical Services</em></h2>
+    <p class="section-sub">From routine check-ups to complex surgical procedures, we provide the full continuum of care under one roof.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏥</div>
+      <h3>Emergency & Trauma</h3>
+      <p>Round-the-clock emergency services with rapid response teams, trauma bays, and critical care units ready 24/7.</p>
+      <a href="#emergency" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">❤️</div>
+      <h3>Cardiology</h3>
+      <p>Advanced cardiac diagnostics, interventional cardiology, and heart surgery by board-certified cardiologists.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧠</div>
+      <h3>Neurology & Neurosurgery</h3>
+      <p>Comprehensive brain and spine care including diagnostics, medical management, and surgical intervention.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3>Maternity & Paediatrics</h3>
+      <p>Complete women's health services from prenatal care through delivery, plus dedicated paediatric units for children.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔬</div>
+      <h3>Laboratory & Diagnostics</h3>
+      <p>State-of-the-art laboratory, MRI, CT scan, ultrasound, X-ray, and pathology services with fast turnaround.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💊</div>
+      <h3>Pharmacy Services</h3>
+      <p>In-hospital dispensary with a comprehensive formulary, patient counselling, and medication management.</p>
+      <a href="#contact" class="service-link">Contact →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦷</div>
+      <h3>Dental Care</h3>
+      <p>Full-service dental clinic offering preventive, restorative, cosmetic, and surgical dental treatments.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👁️</div>
+      <h3>Ophthalmology</h3>
+      <p>Advanced eye care including cataract surgery, LASIK consultations, retinal treatments, and glaucoma management.</p>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="service-link">Book now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section id="departments">
+  <div class="section-header section-header-center">
+    <div class="section-label">Clinical Divisions</div>
+    <h2 class="section-title">Our <em>Departments</em></h2>
+    <p class="section-sub" id="deptSectionSub">Departments staffed by experienced consultants and supported by modern equipment.</p>
+  </div>
+  <div class="dept-grid" id="deptGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--text-muted)">Loading departments…</div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency">
+  <h2>⚕️ 24/7 Emergency Services</h2>
+  <p>Life-threatening situation? Our emergency team is on standby. Do not delay — call us immediately.</p>
+  <a href="tel:09024543941" class="btn-emergency">📞 Call Emergency Now</a>
+  <div class="emergency-numbers">
+    <div class="emrg-num"><div class="label">Main Emergency</div><div class="number">09024543941</div></div>
+    <div class="emrg-num"><div class="label">Ambulance</div><div class="number">09024543941</div></div>
+  </div>
+  <p class="emergency-note">Ambulance service available within a 30km radius · Average response time: 8 minutes</p>
+</section>
+
+<!-- DOCTORS -->
+<!-- MEDICAL DIRECTOR -->
+<section id="medical-director">
+  <div class="md-inner">
+    <div class="md-photo-wrap">
+      <div class="md-photo">
+        <img src="../images/md-photo.jpg" alt="Dr. Ayansola Jeremiah Funso — Managing Director, EL DUNAMIS Medical Centre" />
+      </div>
+      <div class="md-badge">✦ Medical Director</div>
+    </div>
+    <div class="md-content">
+      <div class="md-label">Leadership &amp; Vision</div>
+      <h2 class="md-name">Dr. Ayansola Jeremiah </h2>
+      <div class="md-title">Founder &amp; Medical Director</div>
+      <p class="md-bio">
+        Dr. Ayansola Jeremiah Funso is a distinguished medical practitioner, administrator, and minister with a passion for healthcare excellence and kingdom service.
+Dr. Funso earned his MBBS degree from the University of Ilorin College of Medicine and has continued to advance his professional expertise through specialized medical training. He is a Clinical Preceptor with the College of Medicine, University of Lagos, and also holds a Certificate in Ultrasonography from the Lagos State University Teaching Hospital.
+A highly respected healthcare professional, Dr. Funso is a member of the Nigerian Medical Association and the Association of Nigerian Private Medical Practitioners. He is also the Managing Director of EL DUNAMIS MEDICALS LTD , where he provides leadership in delivering quality healthcare services with professionalism and compassion.
+
+
+      </p>
+      <p class="md-bio" style="margin-top:-14px">
+        Beyond his medical and professional accomplishments, Dr. Funso is deeply committed to raising healthy families, strengthening communities, and promoting holistic wellbeing through both ministry and medical practice. He is happily married and blessed with children.</em>
+      </p>
+      <div class="md-stats">
+        <div class="md-stat"><div class="val">30+</div><div class="lbl">Years Experience</div></div>
+        <div class="md-stat"><div class="val">50K+</div><div class="lbl">Lives Impacted</div></div>
+        <div class="md-stat"><div class="val">3</div><div class="lbl">Branches</div></div>
+        <div class="md-stat"><div class="val">24/7</div><div class="lbl">Availability</div></div>
+      </div>
+      <div class="md-quals">
+        <span class="md-qual">MBBS (Lagos)</span>
+        <span class="md-qual">NPMP</span>
+        <span class="md-qual">NMA Member</span>
+      </div>
+      <a href="../schedule-a-visit/schedule-a-visit.html" class="md-cta">📅 Book a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<section id="doctors">
+  <div class="section-header">
+    <div class="section-label">Meet Our Team</div>
+    <h2 class="section-title">Expert <em>Doctors</em></h2>
+    <p class="section-sub">Our board-certified specialists bring decades of combined experience and genuine compassion to every patient encounter.</p>
+  </div>
+  <div class="doctors-grid" id="doctorsGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--muted,#888)">Loading doctors…</div>
+  </div>
+</section>
+
+<!-- STAFF SECTION -->
+<section id="staff">
+  <div class="section-header">
+    <div class="section-label">Our People</div>
+    <h2 class="section-title">Meet Our <em>Staff</em></h2>
+    <p class="section-sub">The dedicated professionals behind every patient experience — from clinical care to administration.</p>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="staff-tabs">
+    <button class="staff-tab active" onclick="filterStaff('all', this)">All Staff</button>
+    <button class="staff-tab" onclick="filterStaff('management', this)">Management</button>
+    <button class="staff-tab" onclick="filterStaff('nursing', this)">Nursing</button>
+    <button class="staff-tab" onclick="filterStaff('clinical-support', this)">Clinical Support</button>
+  </div>
+
+  <div class="staff-grid" id="staffGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--muted,#888)">Loading staff…</div>
+  </div><!-- /staff-grid -->
+
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="feedback-header-row">
+    <div class="section-header" style="margin-bottom:0">
+      <div class="section-label">Patient Feedback</div>
+      <h2 class="section-title">What Our <em>Patients</em> Say</h2>
+      <p class="section-sub">Real experiences from patients and families who have trusted EL DUNAMIS Medical Centre with their health.</p>
+    </div>
+    <a href="../leave-a-review/leave-a-review.html" class="btn-leave-review">✍️ Leave a Review</a>
+  </div>
+
+  <div class="testimonials-grid" id="reviews-container">
+    <div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--text-muted)">Loading patient feedback…</div>
+  </div>
+</section>
+
+<!-- HMO / INSURANCE PARTNERS -->
+<section id="hmo" style="background:#fff;padding:100px 5%;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-header section-header-center">
+      <div class="section-label">Insurance & HMO</div>
+      <h2 class="section-title">We Accept <em>80 HMOs</em></h2>
+      <p class="section-sub">EL DUNAMIS Medical Centre is proudly onboarded with 80 Health Maintenance Organisations. Quality healthcare — covered by your plan.</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:56px;">
+      <div style="background:#1A5C96;padding:28px;text-align:center;">
+        <div style="font-family:var(--ff-display);font-size:40px;font-weight:700;color:#ffffff;line-height:1;">80+</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-top:6px;">HMOs Onboarded</div>
+      </div>
+      <div style="background:var(--navy);padding:28px;text-align:center;border-left:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:var(--ff-display);font-size:40px;font-weight:700;color:#ffffff;line-height:1;">NHIA</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-top:6px;">Accredited Partner</div>
+      </div>
+      <div style="background:#1A5C96;padding:28px;text-align:center;">
+        <div style="font-family:var(--ff-display);font-size:40px;font-weight:700;color:#ffffff;line-height:1;">24/7</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:1px;margin-top:6px;">Claims Support</div>
+      </div>
+    </div>
+
+    <!-- HMO Logo Grid -->
+    <div style="margin-bottom:48px;">
+      <p style="text-align:center;font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;">A Few Of Our Partner HMOs</p>
+      <div class="hmo-logo-grid">
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/axa-mansard.png" alt="AXA Mansard Health"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/leadway.png" alt="Leadway Health"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/reliance.png" alt="Reliance HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/anchor.png" alt="Anchor HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/sterling-health.png" alt="Sterling Health HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/kennedia.png" alt="Kennedia HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/clearline.png" alt="Clearline HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/mbo.png" alt="MB&O Healthcare Services"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/alliance.png" alt="Alliance Healthcare Services"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/hallmark.png" alt="Hallmark HMO"></div>
+        <div class="hmo-logo-card"><img src="../images/hmo-logos/avon.png" alt="Avon HMO"></div>
+      </div>
+      <p style="margin-top:32px;font-size:16px;color:var(--text-muted);max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8;text-align:center;">We are proudly onboarded with <strong>80 Health Maintenance Organisations</strong> across Nigeria, ensuring our patients can access quality care through their existing health plans.</p>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;background:#F9FAFB;border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 24px;">
+      <p style="font-size:15px;color:var(--text-muted);margin-bottom:20px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8;">Don't see your HMO listed? Contact us — we are continuously expanding our network. Walk-in patients and private payments are also welcome.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="../schedule-a-visit/schedule-a-visit.html" class="btn-primary" style="background:var(--navy);color:#fff;">Book with HMO</a>
+        <a href="#contact" class="btn-outline" style="border-color:var(--text);color:var(--text);">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR LOCATIONS / GOOGLE MAPS -->
+<section id="locations" style="background:#fff;padding:80px 5%">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">Find Us</div>
+      <h2 style="font-family:var(--ff-display);font-size:clamp(28px,4vw,42px);color:var(--text);margin:0 0 16px">Our Branch Locations</h2>
+      <p style="color:var(--text-muted);font-size:15px;max-width:520px;margin:0 auto;line-height:1.7">Our main office and two branch locations — all open 24 hours for your care.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+      <!-- Main Office -->
+      <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid rgba(10,22,40,0.06)">
+        <div style="background:var(--navy);padding:20px 24px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📍</div>
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase">Main Office</div>
+            <div style="color:#fff;font-family:var(--ff-display);font-size:17px;font-weight:600;margin-top:2px">EL Dunamis Medical Centre</div>
+          </div>
+        </div>
+        <div style="padding:20px 24px 16px;border-bottom:1px solid rgba(10,22,40,0.07)">
+          <p style="margin:0;font-size:14px;color:var(--text-muted);line-height:1.7">17, King Solomon Street,<br>Araromi Bus Stop, Isheri-LASU Road,<br>Akesan, Lagos State.</p>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <span style="font-size:12px;background:rgba(37, 99, 235, 0.10);color:var(--text);padding:4px 10px;border-radius:20px;font-weight:600">⏰ Open 24 Hours</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=El Dunamis+Medical+Centre%2C+17+King+Solomon+Street%2C+Araromi+Bus+Stop%2C+Akesan-Igando%2C+Lasu-Isheri+Rd%2C+Lagos%2C+Nigeria" target="_blank" rel="noopener" style="font-size:12px;background:var(--navy);color:#fff;padding:4px 10px;border-radius:20px;font-weight:600;text-decoration:none">🗺 Open in Maps</a>
+          </div>
+        </div>
+        <div style="height:240px">
+          <iframe
+            src="https://maps.google.com/maps?q=EL+Dunamis+Medical+Centre,+17+King+Solomon+Street,+Araromi+Bus+Stop,+Akesan,+Lagos,+Nigeria&output=embed&z=17"
+            width="100%" height="240" style="border:0;display:block" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Main Office Location Map">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Branch 1 -->
+      <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid rgba(10,22,40,0.06)">
+        <div style="background:var(--navy);padding:20px 24px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📍</div>
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase">Branch 1</div>
+            <div style="color:#fff;font-family:var(--ff-display);font-size:17px;font-weight:600;margin-top:2px">EL Dunamis Medical Centre And Maternity</div>
+          </div>
+        </div>
+        <div style="padding:20px 24px 16px;border-bottom:1px solid rgba(10,22,40,0.07)">
+          <p style="margin:0;font-size:14px;color:var(--text-muted);line-height:1.7">1, Amobi Nwanah Street,<br>Off Alaja Road, Megida Bus Stop,<br>Ayobo, Lagos State.</p>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <span style="font-size:12px;background:rgba(37, 99, 235, 0.10);color:var(--text);padding:4px 10px;border-radius:20px;font-weight:600">⏰ Open 24 Hours</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=EL+Dunamis+Medical+Centre+And+Maternity,+1+Amobi+Nwanah+Street,+Ayobo,+Lagos,+Nigeria" target="_blank" rel="noopener" style="font-size:12px;background:var(--navy);color:#fff;padding:4px 10px;border-radius:20px;font-weight:600;text-decoration:none">🗺 Open in Maps</a>
+          </div>
+        </div>
+        <div style="height:240px">
+          <iframe
+            src="https://maps.google.com/maps?q=EL+Dunamis+Medical+Centre+And+Maternity,+1+Amobi+Nwanah+Street,+Ayobo,+Lagos,+Nigeria&output=embed&z=17"
+            width="100%" height="240" style="border:0;display:block" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Branch 1 Location Map">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Branch 2 -->
+      <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid rgba(10,22,40,0.06)">
+        <div style="background:var(--navy);padding:20px 24px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📍</div>
+          <div>
+            <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase">Branch 2</div>
+            <div style="color:#fff;font-family:var(--ff-display);font-size:17px;font-weight:600;margin-top:2px">Right Focus Diagnostics Centre</div>
+          </div>
+        </div>
+        <div style="padding:20px 24px 16px;border-bottom:1px solid rgba(10,22,40,0.07)">
+          <p style="margin:0;font-size:14px;color:var(--text-muted);line-height:1.7">8 Alaja Road,<br>Megida Bus Stop, Ayobo,<br>Lagos 100278, Lagos State.</p>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <span style="font-size:12px;background:rgba(37, 99, 235, 0.10);color:var(--text);padding:4px 10px;border-radius:20px;font-weight:600">⏰ Open 24 Hours</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Right+Focus+Diagnostics+Centre,+8+Alaja+Road,+Megida+Bus+Stop,+Ayobo,+Lagos,+Nigeria" target="_blank" rel="noopener" style="font-size:12px;background:var(--navy);color:#fff;padding:4px 10px;border-radius:20px;font-weight:600;text-decoration:none">🗺 Open in Maps</a>
+          </div>
+        </div>
+        <div style="height:240px">
+          <iframe
+            src="https://maps.google.com/maps?q=Right+Focus+Diagnostics+Centre,+8+Alaja+Road,+Megida+Bus+Stop,+Ayobo,+Lagos,+Nigeria&output=embed&z=17"
+            width="100%" height="240" style="border:0;display:block" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Branch 2 Location Map — Right Focus Diagnostics Centre">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile responsive override -->
+    
+  </div>
+</section>
+
+<!-- VISITING HOURS -->
+<section id="visiting-hours" style="background:#F7F9FC;padding:80px 5%">
+  <div style="max-width:700px;margin:0 auto;text-align:center">
+    <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px">Plan Your Visit</div>
+    <h2 style="font-family:var(--ff-display);font-size:clamp(28px,4vw,42px);color:var(--text);margin:0 0 16px">Visiting <em>Hours</em></h2>
+    <p style="color:var(--text-muted);font-size:15px;max-width:520px;margin:0 auto 40px;line-height:1.7">While our Emergency and OPD services run 24/7, visits to admitted patients are welcome during the hours below.</p>
+
+    <div class="visiting-hours-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="background:#fff;border-radius:12px;padding:32px 24px;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid rgba(10,22,40,0.06)">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px">🌅</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:8px">Morning Visit</div>
+        <div style="font-family:var(--ff-display);font-size:26px;font-weight:600;color:var(--text)">10:30am – 12:30pm</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:32px 24px;box-shadow:0 4px 24px rgba(10,22,40,0.08);border:1px solid rgba(10,22,40,0.06)">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px">🌇</div>
+        <div style="font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:8px">Afternoon Visit</div>
+        <div style="font-family:var(--ff-display);font-size:26px;font-weight:600;color:var(--text)">4:00pm – 6:00pm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section id="faq" style="background:#F7F9FC;padding:80px 5%">
+  <div style="max-width:820px;margin:0 auto">
+    <div class="section-header section-header-center">
+      <div class="section-label">Got Questions?</div>
+      <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div id="faq-list" style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
+      <div class="faq-item" style="background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(10,22,40,0.06);overflow:hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" style="width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Do you accept walk-in patients, or is an appointment required?
+          <span style="flex-shrink:0">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding:0 24px 20px;color:var(--text-muted);font-size:14px;line-height:1.7">We welcome walk-ins for general consultations, but booking ahead through our <a href="../schedule-a-visit/schedule-a-visit.html">Schedule a Visit</a> page helps us reduce your wait time and ensures the right doctor is available.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(10,22,40,0.06);overflow:hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" style="width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px">
+          What are your clinic hours?
+          <span style="flex-shrink:0">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding:0 24px 20px;color:var(--text-muted);font-size:14px;line-height:1.7">EL DUNAMIS Medical Centre is open 24 hours a day, 7 days a week. Both our outpatient clinics and emergency services are available around the clock across all branches, every day of the year.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(10,22,40,0.06);overflow:hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" style="width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px">
+          What do I need to bring for my first antenatal or immunization visit?
+          <span style="flex-shrink:0">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding:0 24px 20px;color:var(--text-muted);font-size:14px;line-height:1.7">Please bring a valid ID, your HMO card (if applicable), and any previous medical or immunization records. Antenatal clinic runs every Thursday; immunization clinic runs every Tuesday.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(10,22,40,0.06);overflow:hidden">
+        <button onclick="this.parentElement.classList.toggle('open')" style="width:100%;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px">
+          Is my HMO plan accepted?
+          <span style="flex-shrink:0">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding:0 24px 20px;color:var(--text-muted);font-size:14px;line-height:1.7">We're onboarded with over 80 HMOs and are an NHIA-accredited partner. Call 09024543941 to confirm your specific plan before your visit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM SECTION -->
+<section id="contact-form-section" style="background:#fff;padding:80px 5%">
+  <div style="max-width:680px;margin:0 auto">
+    <div class="section-label" style="text-align:center">Get in Touch</div>
+    <h2 class="section-title" style="text-align:center">Send Us a <em>Message</em></h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 40px">Have a question, concern, or feedback? Fill out the form below and our patient relations team will get back to you within 24 hours.</p>
+
+    <div style="background:#fff;border-radius:16px;padding:40px;box-shadow:var(--shadow)">
+      <div id="contact-form-fields">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="contact-name" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="contact-email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="contact-subject" placeholder="What is your inquiry about?" />
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea id="contact-message" style="min-height:140px" placeholder="Write your message here..."></textarea>
+        </div>
+        <button id="contact-submit-btn" onclick="submitContact()" class="form-submit" style="background:var(--gold);color:var(--text)">Send Message</button>
+        <p class="form-note">Your message is private. We respond within 24 hours on business days.</p>
+      </div>
+
+      <div id="contact-success-box" style="display:none;text-align:center;padding:20px 0">
+        <div style="font-size:48px;margin-bottom:16px">&#x2705;</div>
+        <h3 style="font-family:var(--ff-display);font-size:24px;color:var(--accent-green);margin-bottom:12px">Message Received!</h3>
+        <p id="contact-success-msg" style="color:var(--text-muted);font-size:15px;line-height:1.8;max-width:480px;margin:0 auto 24px"></p>
+        <button onclick="document.getElementById('contact-success-box').style.display='none';document.getElementById('contact-form-fields').style.display='block'" class="btn-primary" style="background:var(--navy);color:#fff;border:none;cursor:pointer;display:inline-block;padding:14px 32px;border-radius:4px;font-weight:600;font-size:15px">Send Another Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS TEASER -->
+<section id="careers" style="background:var(--navy);padding:90px 5%;text-align:center">
+  <div style="max-width:640px;margin:0 auto">
+    <div class="section-label" style="color:#fff">Join Our Team</div>
+    <h2 class="section-title" style="color:#fff">We're <em style="color:#fff">Hiring</em></h2>
+    <p style="color:#fff;font-size:15px;line-height:1.8;margin:16px 0 32px">
+      We're always looking for dedicated healthcare professionals — doctors, nurses, lab scientists, pharmacists, and more — to join the EL DUNAMIS family.
+    </p>
+    <a href="../careers/careers.html" style="display:inline-block;background:var(--gold);color:#fff;padding:16px 40px;border-radius:var(--radius);font-weight:700;text-decoration:none;font-size:15px">View Openings &amp; Apply</a>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="contact-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="../images/logo.png" alt="EL DUNAMIS Medical Centre" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+        <div class="footer-brand-name">EL <span>DUNAMIS</span><div class="footer-brand-sub">MEDICAL CENTRE</div></div>
+      </div>
+      <p class="footer-desc">Where compassion meets clinical excellence. Serving our communities with strength, purpose, and unwavering dedication since 2000.</p>
+      <div class="footer-contact-item"><span class="icon">📍</span><span><strong style="color:#fff">Main Office (EL Dunamis Medical Centre):</strong> 17, King Solomon Street,<br>Araromi Bus Stop, Isheri-LASU Road,<br>Akesan, Lagos State</span></div>
+      <div class="footer-contact-item"><span class="icon">📍</span><span><strong style="color:#fff">Branch 1 (EL Dunamis Medical Centre And Maternity):</strong> 1, Amobi Nwanah Street,<br>Off Alaja Road, Megida Bus Stop,<br>Ayobo, Lagos State</span></div>
+      <div class="footer-contact-item"><span class="icon">📍</span><span><strong style="color:#fff">Branch 2 (Right Focus Diagnostics Centre):</strong> 8 Alaja Road,<br>Megida Bus Stop, Ayobo, Lagos</span></div>
+      <div class="footer-contact-item"><span class="icon">📞</span><span>09024543941</span></div>
+      <div class="footer-contact-item"><span class="icon">✉️</span><span>Eldunamismedicalcentre2020@gmail.com<br>Eldunamismedicalshmoclient@gmail.com</span></div>
+      <div class="footer-contact-item"><span class="icon">⏰</span><span>Open 24/7 — Emergency & OPD Services</span></div>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="../schedule-a-visit/schedule-a-visit.html">Book Appointment</a></li>
+        <li><a href="#departments">Departments</a></li>
+        <li><a href="#doctors">Find a Doctor</a></li>
+        <li><a href="#hmo">HMO & Insurance</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="../careers/careers.html">Careers</a></li>
+        <li><a href="#emergency">Emergency</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Patient Services</h5>
+      <ul>
+        <li><a href="../schedule-a-visit/schedule-a-visit.html">Telemedicine</a></li>
+        <li><a href="#visiting-hours">Visiting Hours</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://www.facebook.com/share/1AzaiMvaR2/" target="_blank" rel="noopener">📘 Facebook</a></li>
+        <li><a href="https://www.instagram.com/eldunamismedicalcentre?igsh=YW8yNGtkeDE4Y3dh" target="_blank" rel="noopener">📸 Instagram</a></li>
+        <li><a href="https://x.com/eldunamiscentre?t=HFT5cKLT39-XoeuHvAwboA&amp;s=09" target="_blank" rel="noopener">🐦 Twitter / X</a></li>
+      </ul>
+      <div style="margin-top:24px;padding:16px;background:rgba(76, 175, 125,0.1);border-radius:8px;border:1px solid rgba(76, 175, 125,0.2)">
+        <div style="color:var(--gold);font-size:12px;font-weight:600;letter-spacing:1px;margin-bottom:8px">ACCREDITATIONS</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.8">NMA Certified<br>NHIA Partner<br>ISO 9001:2015<br>JCI Assessed</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="copyright-year">2025</span> EL DUNAMIS Medical Centre. All rights reserved.</p>
+    <a href="../admin/admin.html" class="admin-portal-btn">🔒 Admin Portal</a>
+  </div>
+</footer>
+
+<a id="whatsapp-fab" href="https://wa.me/2349024543941?text=Hello%2C%20I%27d%20like%20to%20ask%20about%20EL DUNAMIS%20Medical%20Centre" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.593 4.46 1.719 6.4L3.2 28.8l6.564-1.68a12.74 12.74 0 0 0 6.237 1.633h.005c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.753-12.805-12.753zm0 23.36a10.55 10.55 0 0 1-5.376-1.472l-.386-.229-3.994 1.022 1.067-3.891-.251-.4a10.53 10.53 0 0 1-1.62-5.59c0-5.83 4.744-10.573 10.565-10.573 2.823 0 5.477 1.1 7.474 3.098a10.5 10.5 0 0 1 3.096 7.48c0 5.83-4.744 10.555-10.575 10.555zm5.79-7.905c-.317-.159-1.877-.926-2.168-1.032-.29-.106-.502-.159-.713.16-.212.317-.82 1.032-1.006 1.243-.185.212-.37.238-.687.08-.317-.16-1.34-.494-2.552-1.573-.943-.84-1.58-1.878-1.765-2.195-.185-.318-.02-.49.14-.648.143-.143.317-.37.476-.556.16-.185.212-.318.317-.53.106-.212.053-.397-.026-.556-.08-.16-.713-1.717-.977-2.353-.257-.618-.518-.535-.713-.545l-.607-.011c-.212 0-.556.08-.847.397-.29.318-1.11 1.084-1.11 2.644 0 1.56 1.137 3.066 1.296 3.278.159.212 2.24 3.42 5.427 4.797.758.327 1.35.523 1.812.669.762.242 1.455.208 2.003.126.611-.091 1.877-.767 2.141-1.507.264-.74.264-1.375.185-1.507-.08-.132-.29-.212-.607-.37z"/></svg>
+</a>
+
+<!-- Sticky mobile Book Appointment bar -->
+<div id="sticky-mobile-cta">
+  <a href="tel:09024543941" class="sticky-cta-call">📞 Call</a>
+  <a href="../schedule-a-visit/schedule-a-visit.html" class="sticky-cta-book">Book Appointment</a>
+</div>
+
+<script src="../shared/api.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./admin.css" />
+<meta charset="UTF-8"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Staff Portal — EL DUNAMIS Medical Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════════════ -->
+<div id="login-screen">
+
+  <!-- Left decorative panel -->
+  <div id="login-left">
+    <div class="login-brand">
+      <div class="login-logo"><img src="../images/logo.png" alt="EL DUNAMIS Logo" style="width:100%;height:100%;object-fit:contain;padding:6px;" /></div>
+      <h1>EL <span>DUNAMIS</span></h1>
+      <p>Medical Centre · Staff Portal</p>
+    </div>
+    <div class="login-stats">
+      <div class="ls-item"><div class="val" id="ls-appts">—</div><div class="key">Appointments</div></div>
+      <div class="ls-item"><div class="val" id="ls-cvs">—</div><div class="key">Applications</div></div>
+    </div>
+    <div class="login-quote">
+      <p>"The art of medicine consists in amusing the patient while nature cures the disease."</p>
+      <cite>— Voltaire</cite>
+    </div>
+  </div>
+
+  <!-- Right login form -->
+  <div id="login-right">
+    <div class="login-form-wrap">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Sign in to the EL DUNAMIS Medical Centre administration portal</p>
+
+      <div class="login-error" id="login-error">❌ Invalid username or password. Please try again.</div>
+
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="login-user" placeholder="Enter your username" autocomplete="username"/>
+      </div>
+      <div class="field has-icon">
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+        <span class="field-icon" onclick="togglePass()" id="pass-eye">👁</span>
+      </div>
+
+      <button class="btn-login" id="login-btn" onclick="doLogin()">
+        Sign In to Dashboard
+      </button>
+
+      <div style="text-align:center;margin-top:14px">
+        <a href="#" onclick="openForgotPassword();return false;" style="font-size:13px;color:var(--muted,#6b7280);text-decoration:underline">Forgot password?</a>
+      </div>
+
+      <div class="login-hint">
+        <strong>First time signing in?</strong><br>
+        Use the default account provided by your administrator. You'll be asked to set your own password right after signing in.
+      </div>
+
+      <a href="../home/index.html" class="back-link">← Return to hospital website</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FORGOT PASSWORD (Super Admin, via recovery code)
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="forgot-pw-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeForgotPassword()">✕</button>
+
+    <div id="forgot-pw-form-view">
+      <div class="modal-title">Reset Password</div>
+      <div class="modal-sub">This is only for <strong>Super Admin</strong> accounts, using the recovery code shown when the account was created (or last regenerated from Settings). If you're not a Super Admin, ask one to reset your password from the Admins screen instead.</div>
+
+      <div class="mfield"><label>Username</label><input type="text" id="fp-username" autocomplete="username"/></div>
+      <div class="mfield"><label>Recovery Code</label><input type="text" id="fp-code" placeholder="XXXX-XXXX-XXXX" autocomplete="off" style="font-family:monospace;letter-spacing:1px"/></div>
+      <div class="mfield"><label>New Password</label><input type="password" id="fp-new-pass" autocomplete="new-password"/></div>
+      <div class="mfield"><label>Confirm New Password</label><input type="password" id="fp-confirm-pass" autocomplete="new-password" onkeydown="if(event.key==='Enter')submitForgotPassword()"/></div>
+      <div id="fp-error" style="display:none;color:#C0392B;font-size:13px;margin-bottom:10px"></div>
+
+      <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="submitForgotPassword()" id="fp-submit-btn">Reset Password</button>
+    </div>
+
+    <div id="forgot-pw-done-view" style="display:none">
+      <div class="modal-title">Password Reset</div>
+      <div class="modal-sub">Your password has been changed. Recovery codes are single-use, so here is your <strong>new</strong> one — save it somewhere safe. It won't be shown again.</div>
+      <div style="display:flex;gap:8px;align-items:center;margin:16px 0">
+        <input type="text" id="fp-new-code" readonly style="flex:1;font-family:monospace;font-size:16px;letter-spacing:1px;padding:12px;border:1px solid var(--border);border-radius:8px;background:#F7F9FC"/>
+        <button class="btn-sm btn-outline" onclick="copyForgotPwCode()">Copy</button>
+      </div>
+      <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="closeForgotPassword()">Continue to Sign In</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FORCED PASSWORD CHANGE (first login)
+══════════════════════════════════════════ -->
+<div id="force-pass-screen">
+  <div class="force-pass-card">
+    <div class="force-pass-icon">🔒</div>
+    <h2>Set a New Password</h2>
+    <p class="subtitle">For your account's security, you must choose a new password before you can continue to the dashboard.</p>
+
+    <div class="login-error" id="force-pass-error">❌ Something went wrong. Please try again.</div>
+
+    <div class="field has-icon">
+      <label>New Password</label>
+      <input type="password" id="force-new-pass" placeholder="At least 8 characters" autocomplete="new-password" onkeydown="if(event.key==='Enter')document.getElementById('force-conf-pass').focus()"/>
+      <span class="field-icon" onclick="togglePass('force-new-pass')">👁</span>
+    </div>
+    <div class="field has-icon">
+      <label>Confirm New Password</label>
+      <input type="password" id="force-conf-pass" placeholder="Re-enter your new password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doForcePasswordChange()"/>
+      <span class="field-icon" onclick="togglePass('force-conf-pass')">👁</span>
+    </div>
+
+    <button class="btn-login" id="force-pass-btn" onclick="doForcePasswordChange()">
+      Set Password &amp; Continue
+    </button>
+
+    <div class="login-hint">
+      Choose something only you know — avoid reusing the temporary password you just signed in with.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DASHBOARD
+══════════════════════════════════════════ -->
+<div id="dashboard">
+
+  <!-- Tapping outside the sidebar on mobile closes it -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeMobileSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <div class="sb-logo"><img src="../images/logo.png" alt="EL DUNAMIS Logo" style="width:100%;height:100%;object-fit:contain;padding:2px;" /></div>
+        <div>
+          <div class="sb-name">EL <span>DUNAMIS</span></div>
+          <div class="sb-sub">Staff Portal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="su-avatar" id="sb-avatar">AD</div>
+      <div>
+        <div class="su-name" id="sb-username">Administrator</div>
+        <div class="su-role" id="sb-role">Super Admin</div>
+      </div>
+      <div class="su-status"></div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a class="nav-item active" onclick="showPanel('overview')" href="#">
+        <span class="ni">📊</span> Overview
+      </a>
+      <a class="nav-item" onclick="showPanel('appointments')" href="#">
+        <span class="ni">📅</span> Appointments
+        <span class="nav-badge" id="nb-appts">0</span>
+      </a>
+      <a class="nav-item" onclick="showPanel('cvs')" href="#">
+        <span class="ni">📋</span> CV Applications
+        <span class="nav-badge" id="nb-cvs">0</span>
+      </a>
+      <a class="nav-item" onclick="showPanel('feedbacks')" href="#">
+        <span class="ni">💬</span> Feedbacks
+        <span class="nav-badge" id="nb-fbs">0</span>
+      </a>
+      <a class="nav-item" onclick="showPanel('messages')" href="#">
+        <span class="ni">✉️</span> Messages
+        <span class="nav-badge" id="nb-msgs">0</span>
+      </a>
+
+      <div class="nav-section-label">Management</div>
+      <a class="nav-item" onclick="showPanel('doctors')" href="#">
+        <span class="ni">👨‍⚕️</span> Doctors
+      </a>
+      <a class="nav-item" onclick="showPanel('staff')" href="#">
+        <span class="ni">🧑‍💼</span> Staff
+      </a>
+      <a class="nav-item" onclick="showPanel('departments')" href="#">
+        <span class="ni">🏥</span> Departments
+      </a>
+      <a class="nav-item" onclick="showPanel('openings')" href="#">
+        <span class="ni">💼</span> Job Openings
+      </a>
+      <a class="nav-item" onclick="showPanel('media')" href="#">
+        <span class="ni">📰</span> Media Center
+      </a>
+      <a class="nav-item" onclick="showPanel('testimonials')" href="#">
+        <span class="ni">⭐</span> Testimonials
+      </a>
+
+      <div class="nav-section-label">System</div>
+      <a class="nav-item" onclick="showPanel('settings')" href="#">
+        <span class="ni">⚙️</span> Settings
+      </a>
+      <a class="nav-item" id="nav-admins" onclick="showPanel('admins')" href="#" style="display:none">
+        <span class="ni">🛡️</span> Admins
+      </a>
+      <a class="nav-item" href="../home/index.html" target="_blank">
+        <span class="ni">🌐</span> View Website
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="doLogout()">
+        <span style="font-size:16px">🚪</span> Sign Out
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-menu-btn" onclick="toggleMobileSidebar()" aria-label="Open menu">☰</button>
+        <div>
+          <div class="page-title" id="page-title">Overview</div>
+          <div class="breadcrumb">EL DUNAMIS Medical Centre Admin / <span id="breadcrumb-current">Dashboard</span></div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-date" id="topbar-date"></div>
+        <div class="notif-btn" title="Notifications">🔔<div class="notif-dot"></div></div>
+        <div class="user-pill">
+          <div class="up-avatar" id="tb-avatar">AD</div>
+          <span class="up-name" id="tb-username">Admin</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content-area">
+
+      <!-- ── OVERVIEW PANEL ── -->
+      <div class="panel active" id="panel-overview">
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="sc-icon blue">📅</div>
+            <div class="sc-val" id="ov-appts">0</div>
+            <div class="sc-label">Total Appointments</div>
+            <div class="sc-change up">↑ All time</div>
+          </div>
+          <div class="stat-card green">
+            <div class="sc-icon green">📋</div>
+            <div class="sc-val" id="ov-cvs">0</div>
+            <div class="sc-label">CV Applications</div>
+            <div class="sc-change up">↑ All time</div>
+          </div>
+          <div class="stat-card red">
+            <div class="sc-icon red">💬</div>
+            <div class="sc-val" id="ov-fbs">0</div>
+            <div class="sc-label">Patient Feedbacks</div>
+            <div class="sc-change up">↑ All time</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:24px">
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Recent Activity</div>
+              <div class="card-actions">
+                <button class="btn-sm btn-outline" onclick="loadOverview()">↻ Refresh</button>
+              </div>
+            </div>
+            <div style="padding:8px 24px" id="activity-feed">
+              <div class="empty-state"><div class="ei">📭</div><p>No activity yet. Data will appear as appointments come in.</p></div>
+            </div>
+          </div>
+
+          <!-- Appointments by Dept Chart -->
+          <div class="card">
+            <div class="card-header"><div class="card-title">Bookings by Department</div></div>
+            <div style="padding:20px 24px">
+              <div class="chart-bar-wrap" id="dept-chart">
+                <div class="empty-state" style="width:100%;padding:20px 0"><div class="ei">📊</div><p>No data yet</p></div>
+              </div>
+            </div>
+            <!-- Quick stats -->
+            <div style="padding:0 24px 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px" id="quick-stats-grid">
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Appointments preview -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Latest Appointments</div>
+            <button class="btn-sm btn-primary" onclick="showPanel('appointments')">View All →</button>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Reference</th><th>Patient</th><th>Department</th><th>Date</th><th>Type</th><th>Status</th></tr></thead>
+              <tbody id="ov-appt-table"><tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">No appointments yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── APPOINTMENTS PANEL ── -->
+      <div class="panel" id="panel-appointments">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">All Appointments</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-gold" onclick="exportCSV('appointments')">⬇ Export CSV</button>
+              <button class="btn-sm btn-primary" onclick="openAddAppt()">+ Add Manual</button>
+            </div>
+          </div>
+          <div class="filter-bar">
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="appt-search" placeholder="Search by name, email, department…" oninput="filterAppts()"/>
+            </div>
+            <select class="filter-select" id="appt-status-filter" onchange="filterAppts()">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+            <select class="filter-select" id="appt-type-filter" onchange="filterAppts()">
+              <option value="">All Types</option>
+              <option value="In-Person">In-Person</option>
+              <option value="Teleconsult">Telemedicine</option>
+            </select>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Ref #</th><th>Patient Name</th><th>Phone</th><th>Email</th><th>Department</th><th>Date</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="appt-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CV APPLICATIONS PANEL ── -->
+      <div class="panel" id="panel-cvs">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">CV Applications</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-gold" onclick="exportCSV('cvs')">⬇ Export CSV</button>
+            </div>
+          </div>
+          <div class="filter-bar">
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="cv-search" placeholder="Search by name, email, department…" oninput="filterCVs()"/>
+            </div>
+            <select class="filter-select" id="cv-dept-filter" onchange="filterCVs()">
+              <option value="">All Departments</option>
+            </select>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Full Name</th><th>Phone</th><th>Email</th><th>Department</th><th>Degree</th><th>Experience</th><th>Applied</th><th>Action</th></tr></thead>
+              <tbody id="cv-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FEEDBACKS PANEL ── -->
+      <div class="panel" id="panel-feedbacks">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Patient Feedbacks</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-gold" onclick="exportCSV('feedbacks')">⬇ Export CSV</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Name</th><th>Phone / Email</th><th>Rating</th><th>Recommend?</th><th>Comment</th><th>Date</th><th>Action</th></tr></thead>
+              <tbody id="fb-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MESSAGES PANEL ── -->
+      <div class="panel" id="panel-messages">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Contact Messages</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-gold" onclick="exportCSV('messages')">⬇ Export CSV</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Date</th><th>Action</th></tr></thead>
+              <tbody id="msg-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DOCTORS PANEL ── -->
+      <div class="panel" id="panel-doctors">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Doctors & Specialists</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddDoctor()">+ Add Doctor</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Specialty</th><th>Department</th><th>Availability</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="doctors-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAFF PANEL ── -->
+      <div class="panel" id="panel-staff">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Staff Directory</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddStaff()">+ Add Staff</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Role</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="staff-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DEPARTMENTS PANEL ── -->
+      <div class="panel" id="panel-departments">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Clinical Divisions</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddDepartment()">+ Add Department</button>
+            </div>
+          </div>
+          <div style="padding:20px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px" id="dept-grid">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── JOB OPENINGS PANEL ── -->
+      <div class="panel" id="panel-openings">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Current Openings — Careers Page</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddOpening()">+ Add Opening</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Opening</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
+              <tbody id="openings-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MEDIA CENTER PANEL ── -->
+      <div class="panel" id="panel-media">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Media Center — News &amp; Announcements</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddMedia()">+ Add Item</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 16px" id="media-cat-tabs">
+            <button class="btn-sm btn-outline media-cat-tab active" data-cat="announcement" onclick="filterMedia('announcement', this)">📢 Announcements</button>
+            <button class="btn-sm btn-outline media-cat-tab" data-cat="news" onclick="filterMedia('news', this)">📰 News</button>
+            <button class="btn-sm btn-outline media-cat-tab" data-cat="gallery" onclick="filterMedia('gallery', this)">🖼 Gallery</button>
+            <button class="btn-sm btn-outline media-cat-tab" data-cat="video" onclick="filterMedia('video', this)">▶️ Videos</button>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Title</th><th>Detail</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="media-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TESTIMONIALS PANEL ── -->
+      <div class="panel" id="panel-testimonials">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Overall Rating</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Shown in the rating summary on the "Leave a Review" page.</div>
+            </div>
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:18px">
+            <div class="mrow">
+              <div class="mfield"><label>Score</label><input type="text" id="rating-score" placeholder="4.9"/></div>
+              <div class="mfield" style="flex:3"><label>Review Count Label</label><input type="text" id="rating-count-label" placeholder="Based on 340+ patient reviews"/></div>
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:8px">Star Breakdown (%)</label>
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+                <div class="mfield"><label>★ 5</label><input type="number" id="rating-pct5" min="0" max="100"/></div>
+                <div class="mfield"><label>★ 4</label><input type="number" id="rating-pct4" min="0" max="100"/></div>
+                <div class="mfield"><label>★ 3</label><input type="number" id="rating-pct3" min="0" max="100"/></div>
+                <div class="mfield"><label>★ 2</label><input type="number" id="rating-pct2" min="0" max="100"/></div>
+                <div class="mfield"><label>★ 1</label><input type="number" id="rating-pct1" min="0" max="100"/></div>
+              </div>
+            </div>
+            <button class="btn-sm btn-primary" style="align-self:flex-start;padding:12px 28px" onclick="saveRatingSettings()">Save Rating</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Featured Testimonials — Homepage</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px">The top 3 by Display Order appear in "What Our Patients Say" on the homepage.</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddTestimonial()">+ Add Testimonial</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Role</th><th>Rating</th><th>Quote</th><th>Status</th><th>Order</th><th>Actions</th></tr></thead>
+              <tbody id="testimonials-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS PANEL ── -->
+      <div class="panel" id="panel-settings">
+        <div class="settings-grid">
+          <div>
+            <div class="profile-card">
+              <div class="profile-avatar-lg" id="set-avatar">AD</div>
+              <div class="profile-name" id="set-name">Administrator</div>
+              <div class="profile-role" id="set-role">Super Admin</div>
+              <div class="profile-meta" id="set-meta"></div>
+            </div>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom:20px">
+              <div class="card-header"><div class="card-title">Profile Settings</div></div>
+              <div style="padding:24px">
+                <div class="mrow">
+                  <div class="mfield"><label>Display Name</label><input type="text" id="set-display-name"/></div>
+                  <div class="mfield"><label>Email</label><input type="email" id="set-email"/></div>
+                </div>
+                <div class="mfield"><label>Phone</label><input type="text" id="set-phone" placeholder="+234 ..."/></div>
+                <button class="btn-sm btn-primary" onclick="saveSettings()">Save Changes</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Change Password</div></div>
+              <div style="padding:24px">
+                <div class="mfield"><label>Current Password</label><input type="password" id="cur-pass"/></div>
+                <div class="mrow">
+                  <div class="mfield"><label>New Password</label><input type="password" id="new-pass"/></div>
+                  <div class="mfield"><label>Confirm Password</label><input type="password" id="conf-pass"/></div>
+                </div>
+                <button class="btn-sm btn-gold" onclick="changePass()">Update Password</button>
+              </div>
+            </div>
+            <div class="card" id="recovery-code-card" style="display:none;margin-top:20px">
+              <div class="card-header"><div class="card-title">Recovery Code</div></div>
+              <div style="padding:24px">
+                <p style="font-size:13px;color:var(--muted);margin:0 0 14px">
+                  Used by "Forgot password?" on the login screen — this app doesn't send email, so this code is the only way to reset your password if you forget it. Regenerating replaces your old code immediately; save the new one somewhere safe.
+                </p>
+                <button class="btn-sm btn-outline" onclick="regenerateRecoveryCode()">🔑 Regenerate Recovery Code</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ADMINS PANEL (Super Admin only) ── -->
+      <div class="panel" id="panel-admins">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Admin Accounts</div>
+            <div class="card-actions">
+              <button class="btn-sm btn-primary" onclick="openAddAdmin()">+ Add Admin</button>
+            </div>
+          </div>
+          <div style="padding:14px 20px 0;font-size:12px;color:var(--muted)">
+            Each person should sign in with their own account — never share a login. New accounts get a one-time temporary password and must set their own on first sign-in.
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="admins-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content-area -->
+  </div><!-- /main-content -->
+</div><!-- /dashboard -->
+
+<!-- ══ MODALS ══ -->
+
+<!-- Add / Edit Admin Modal -->
+<div class="modal-overlay" id="add-admin-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-admin-modal')">✕</button>
+    <div class="modal-title" id="admin-modal-title">Add Admin Account</div>
+    <div class="modal-sub" id="admin-modal-sub">Set a one-time password for them (or leave it blank to generate one) and share it securely. They'll be asked to set their own password on first sign-in.</div>
+
+    <input type="hidden" id="admin-id"/>
+
+    <div class="mrow">
+      <div class="mfield"><label>Full Name *</label><input type="text" id="admin-name" placeholder="e.g. Ngozi Umeh"/></div>
+      <div class="mfield"><label>Username *</label><input type="text" id="admin-username" placeholder="e.g. ngozi.umeh" autocomplete="off"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Role</label>
+        <select id="admin-role">
+          <option value="Admin">Admin</option>
+          <option value="Super Admin">Super Admin — can manage other admin accounts</option>
+        </select>
+      </div>
+      <div class="mfield" id="admin-status-row" style="display:none">
+        <label>Status</label>
+        <select id="admin-status">
+          <option value="Active">Active</option>
+          <option value="Disabled">Disabled (cannot sign in)</option>
+        </select>
+      </div>
+    </div>
+    <div class="mfield" id="admin-otp-row">
+      <label>One-time Password</label>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="admin-otp" placeholder="Leave blank to auto-generate" autocomplete="off" style="flex:1;font-family:monospace"/>
+        <button type="button" class="btn-sm btn-outline" onclick="document.getElementById('admin-otp').value=generateOneTimePassword()">Generate</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">At least 8 characters. They'll be required to replace it with their own password the first time they sign in.</div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveAdmin()" id="admin-save-btn">Add Admin</button>
+  </div>
+</div>
+
+<!-- Reset Admin Password Modal -->
+<div class="modal-overlay" id="reset-admin-pw-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('reset-admin-pw-modal')">✕</button>
+    <div class="modal-title">Reset Password</div>
+    <div class="modal-sub">Set a new one-time password for <strong id="rp-admin-name"></strong>. Their current password stops working immediately, and they'll be required to choose their own the next time they sign in.</div>
+    <input type="hidden" id="rp-admin-id"/>
+    <div class="mfield">
+      <label>One-time Password</label>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="rp-otp" placeholder="Leave blank to auto-generate" autocomplete="off" style="flex:1;font-family:monospace" onkeydown="if(event.key==='Enter')confirmResetAdminPassword()"/>
+        <button type="button" class="btn-sm btn-outline" onclick="document.getElementById('rp-otp').value=generateOneTimePassword()">Generate</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">At least 8 characters.</div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="confirmResetAdminPassword()" id="rp-confirm-btn">Reset Password</button>
+  </div>
+</div>
+
+<!-- One-time Temporary Password Reveal Modal -->
+<div class="modal-overlay" id="admin-temp-pass-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('admin-temp-pass-modal')">✕</button>
+    <div class="modal-title" id="tp-modal-title">Temporary Password</div>
+    <div class="modal-sub" id="tp-modal-sub">Share this with <strong id="tp-admin-name"></strong> securely — it's shown only once. They'll be asked to set their own password the first time they sign in.</div>
+    <div style="display:flex;gap:8px;align-items:center;margin:16px 0">
+      <input type="text" id="tp-value" readonly style="flex:1;font-family:monospace;font-size:16px;letter-spacing:1px;padding:12px;border:1px solid var(--border);border-radius:8px;background:#F7F9FC"/>
+      <button class="btn-sm btn-outline" onclick="copyTempPassword()">Copy</button>
+    </div>
+    <div id="tp-recovery-block" style="display:none">
+      <div class="modal-sub" style="margin-top:0">This account is a <strong>Super Admin</strong>, so it also gets a recovery code — save this too. It's what "Forgot password?" on the login screen uses if the password is ever lost, since this app doesn't send email.</div>
+      <div style="display:flex;gap:8px;align-items:center;margin:16px 0">
+        <input type="text" id="tp-recovery-value" readonly style="flex:1;font-family:monospace;font-size:16px;letter-spacing:1px;padding:12px;border:1px solid var(--border);border-radius:8px;background:#F7F9FC"/>
+        <button class="btn-sm btn-outline" onclick="copyTempRecoveryCode()">Copy</button>
+      </div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="closeModal('admin-temp-pass-modal')">Done</button>
+  </div>
+</div>
+
+<!-- View Appointment Modal -->
+<div class="modal-overlay" id="view-appt-modal">
+  <div class="modal-box view-modal">
+    <button class="modal-close" onclick="closeModal('view-appt-modal')">✕</button>
+    <div class="modal-title">Appointment Details</div>
+    <div class="modal-sub" id="view-appt-ref"></div>
+    <div class="view-body" id="view-appt-body"></div>
+    <div class="view-actions">
+      <button class="btn-sm btn-success" onclick="updateStatus('Confirmed')">✓ Confirm</button>
+      <button class="btn-sm btn-primary" onclick="updateStatus('Completed')">✔ Mark Complete</button>
+      <button class="btn-sm btn-danger" onclick="updateStatus('Cancelled')">✕ Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- View CV Modal -->
+<div class="modal-overlay" id="view-cv-modal">
+  <div class="modal-box view-modal">
+    <button class="modal-close" onclick="closeModal('view-cv-modal')">✕</button>
+    <div class="modal-title">CV Application</div>
+    <div class="view-body" id="view-cv-body"></div>
+    <div class="view-actions" id="view-cv-actions"></div>
+  </div>
+</div>
+
+<!-- View Feedback Modal -->
+<div class="modal-overlay" id="view-fb-modal">
+  <div class="modal-box view-modal">
+    <button class="modal-close" onclick="closeModal('view-fb-modal')">✕</button>
+    <div class="modal-title">Patient Feedback</div>
+    <div class="view-body" id="view-fb-body"></div>
+    <div class="view-actions" id="view-fb-actions"></div>
+  </div>
+</div>
+
+<!-- Promote Feedback → Testimonial -->
+<div class="modal-overlay" id="promote-fb-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('promote-fb-modal')">✕</button>
+    <div class="modal-title">Promote to Testimonial</div>
+    <div class="modal-sub">This creates a new testimonial from <strong id="pf-name"></strong>'s feedback, using their name, rating, and comment. It's saved as a <strong>Draft</strong> so you can review it before it goes live — publish it from the Testimonials tab when you're ready.</div>
+
+    <input type="hidden" id="pf-feedback-id"/>
+
+    <div class="mfield">
+      <label>Role / Context (optional)</label>
+      <input type="text" id="pf-role" placeholder="e.g. Patient's family · Lagos"/>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Shown under the name on the testimonial — the feedback form doesn't collect this, so add it here if you'd like.</div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="confirmPromoteFeedback()" id="pf-confirm-btn">Create Testimonial (Draft)</button>
+  </div>
+</div>
+
+<!-- View Message Modal -->
+<div class="modal-overlay" id="view-msg-modal">
+  <div class="modal-box view-modal">
+    <button class="modal-close" onclick="closeModal('view-msg-modal')">✕</button>
+    <div class="modal-title">Contact Message</div>
+    <div class="view-body" id="view-msg-body"></div>
+    <div class="view-actions" id="view-msg-actions"></div>
+  </div>
+</div>
+
+<!-- Add / Edit Doctor Modal -->
+<div class="modal-overlay" id="add-doctor-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-doctor-modal')">✕</button>
+    <div class="modal-title" id="doctor-modal-title">Add New Doctor</div>
+    <div class="modal-sub">This information appears live on the public "Expert Doctors" section.</div>
+
+    <input type="hidden" id="doc-id"/>
+
+    <div class="mfield">
+      <label>Photo</label>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--gold-pale, #f3ecd8);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border)">
+          <img id="doc-image-preview" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none"/>
+          <span id="doc-image-placeholder" style="font-size:11px;color:var(--muted);text-align:center;padding:4px">No photo</span>
+        </div>
+        <div style="flex:1">
+          <input type="file" id="doc-image-file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="onDoctorImagePicked(event)"/>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, WEBP or GIF, up to 8MB. If no photo is added, initials are shown instead.</div>
+          <button type="button" class="btn-sm btn-outline" id="doc-image-remove-btn" style="margin-top:6px;display:none" onclick="removeDoctorImage()">Remove Photo</button>
+          <span id="doc-image-status" style="font-size:11px;color:var(--muted);margin-left:6px"></span>
+        </div>
+      </div>
+      <input type="hidden" id="doc-image-url" value=""/>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield"><label>Full Name *</label><input type="text" id="doc-name" placeholder="Dr. Firstname Lastname"/></div>
+      <div class="mfield"><label>Specialty *</label><input type="text" id="doc-specialty" placeholder="e.g. Cardiologist"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Department *</label>
+        <select id="doc-dept">
+          <option value="">Select</option>
+          <option>General Medicine</option><option>Cardiology</option><option>Neurology</option>
+          <option>Paediatrics</option><option>Orthopaedics</option><option>Maternity &amp; Gynaecology</option>
+          <option>Oncology</option><option>Ophthalmology</option><option>Dental</option>
+          <option>Physiotherapy</option><option>Radiology</option><option>Psychiatry</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Availability</label><input type="text" id="doc-avail" placeholder="e.g. Mon – Fri"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Qualifications</label><input type="text" id="doc-qual" placeholder="e.g. MBBS, FMCP"/></div>
+      <div class="mfield"><label>Rating</label><input type="text" id="doc-rating" placeholder="e.g. 4.9"/></div>
+    </div>
+    <div class="mfield"><label>Bio (brief)</label><textarea id="doc-bio" placeholder="Short professional biography…"></textarea></div>
+    <div class="mfield"><label>Status</label>
+      <select id="doc-status">
+        <option value="Active">Active</option>
+        <option value="On_Leave">On Leave</option>
+        <option value="Inactive">Inactive (hidden from site)</option>
+      </select>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveDoctor()" id="doc-save-btn">Add Doctor</button>
+  </div>
+</div>
+
+<!-- Add / Edit Staff Modal -->
+<div class="modal-overlay" id="add-staff-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-staff-modal')">✕</button>
+    <div class="modal-title" id="staff-modal-title">Add Staff Member</div>
+    <div class="modal-sub">This information appears live on the public "Meet Our Staff" section.</div>
+
+    <input type="hidden" id="staff-id"/>
+
+    <div class="mfield">
+      <label>Photo</label>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--gold-pale, #f3ecd8);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border)">
+          <img id="staff-image-preview" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none"/>
+          <span id="staff-image-placeholder" style="font-size:11px;color:var(--muted);text-align:center;padding:4px">No photo</span>
+        </div>
+        <div style="flex:1">
+          <input type="file" id="staff-image-file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="onStaffImagePicked(event)"/>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, WEBP or GIF, up to 8MB. If no photo is added, initials are shown instead.</div>
+          <button type="button" class="btn-sm btn-outline" id="staff-image-remove-btn" style="margin-top:6px;display:none" onclick="removeStaffImage()">Remove Photo</button>
+          <span id="staff-image-status" style="font-size:11px;color:var(--muted);margin-left:6px"></span>
+        </div>
+      </div>
+      <input type="hidden" id="staff-image-url" value=""/>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield"><label>Full Name *</label><input type="text" id="staff-name" placeholder="Mr./Mrs./Miss Firstname Lastname"/></div>
+      <div class="mfield"><label>Role / Title *</label><input type="text" id="staff-role" placeholder="e.g. Chief Matron"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Department *</label>
+        <select id="staff-dept">
+          <option value="management">Management</option>
+          <option value="nursing">Nursing</option>
+          <option value="clinical-support">Clinical Support</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Status</label>
+        <select id="staff-status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive (hidden from site)</option>
+        </select>
+      </div>
+    </div>
+    <div class="mfield"><label>Display Order</label><input type="number" id="staff-order" value="0" title="Higher numbers show first"/></div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveStaff()" id="staff-save-btn">Add Staff</button>
+  </div>
+</div>
+
+<!-- Add / Edit Department Modal -->
+<div class="modal-overlay" id="add-department-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-department-modal')">✕</button>
+    <div class="modal-title" id="dept-modal-title">Add Department</div>
+    <div class="modal-sub">This appears live in the "Our Departments" section on the public homepage.</div>
+
+    <input type="hidden" id="dept-id"/>
+
+    <div class="mrow">
+      <div class="mfield"><label>Icon (emoji)</label><input type="text" id="dept-icon" placeholder="❤️" maxlength="4" style="width:80px;text-align:center;font-size:20px"/></div>
+      <div class="mfield" style="flex:2"><label>Department Name *</label><input type="text" id="dept-name" placeholder="e.g. Cardiology"/></div>
+    </div>
+    <div class="mfield"><label>Description</label><input type="text" id="dept-description" placeholder="e.g. Heart & vascular care"/></div>
+    <div class="mrow">
+      <div class="mfield"><label>Count</label><input type="number" id="dept-count" value="0" min="0"/></div>
+      <div class="mfield"><label>Unit Label</label><input type="text" id="dept-unit" placeholder="Specialists"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Status</label>
+        <select id="dept-status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive (hidden from site)</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Display Order</label><input type="number" id="dept-order" value="0" title="Higher numbers show first"/></div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveDepartment()" id="dept-save-btn">Add Department</button>
+  </div>
+</div>
+
+<!-- Add / Edit Job Opening Modal -->
+<div class="modal-overlay" id="add-opening-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-opening-modal')">✕</button>
+    <div class="modal-title" id="opening-modal-title">Add Job Opening</div>
+    <div class="modal-sub">This appears live in the "Current Openings" list on the Careers page.</div>
+
+    <input type="hidden" id="opening-id"/>
+
+    <div class="mrow">
+      <div class="mfield"><label>Icon (emoji)</label><input type="text" id="opening-icon" placeholder="🩺" maxlength="4" style="width:80px;text-align:center;font-size:20px"/></div>
+      <div class="mfield" style="flex:2"><label>Role Title *</label><input type="text" id="opening-title" placeholder="e.g. Resident Doctor — General Medicine"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Status</label>
+        <select id="opening-status">
+          <option value="Open">Open</option>
+          <option value="Closed">Closed (hidden from site)</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Display Order</label><input type="number" id="opening-order" value="0" title="Higher numbers show first"/></div>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveOpening()" id="opening-save-btn">Add Opening</button>
+  </div>
+</div>
+
+<!-- Add / Edit Testimonial Modal -->
+<div class="modal-overlay" id="add-testimonial-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-testimonial-modal')">✕</button>
+    <div class="modal-title" id="testimonial-modal-title">Add Testimonial</div>
+    <div class="modal-sub">Featured in the "What Our Patients Say" section on the homepage.</div>
+
+    <input type="hidden" id="testimonial-id"/>
+
+    <div class="mrow">
+      <div class="mfield"><label>Patient Name *</label><input type="text" id="testimonial-name" placeholder="e.g. Bolaji Nwosu"/></div>
+      <div class="mfield"><label>Role / Location</label><input type="text" id="testimonial-role" placeholder="e.g. Patient's family · Lagos"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Rating</label>
+        <select id="testimonial-rating">
+          <option value="5">★★★★★ (5)</option>
+          <option value="4">★★★★ (4)</option>
+          <option value="3">★★★ (3)</option>
+          <option value="2">★★ (2)</option>
+          <option value="1">★ (1)</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Status</label>
+        <select id="testimonial-status">
+          <option value="Published">Published</option>
+          <option value="Draft">Draft (hidden from site)</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Display Order</label><input type="number" id="testimonial-order" value="0" title="Higher numbers show first; top 3 appear on the homepage"/></div>
+    </div>
+    <div class="mfield">
+      <label>Review Text *</label>
+      <textarea id="testimonial-quote" rows="4" placeholder="What did the patient say?"></textarea>
+    </div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveTestimonial()" id="testimonial-save-btn">Add Testimonial</button>
+  </div>
+</div>
+
+<!-- Add / Edit Media Modal -->
+<div class="modal-overlay" id="add-media-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-media-modal')">✕</button>
+    <div class="modal-title" id="media-modal-title">Add Media Item</div>
+    <div class="modal-sub">Content shown on the public Media page (News &amp; Announcements).</div>
+
+    <input type="hidden" id="med-id"/>
+
+    <div class="mfield">
+      <label>Category *</label>
+      <select id="med-category" onchange="onMediaCategoryChange()">
+        <option value="announcement">📢 Announcement</option>
+        <option value="news">📰 News &amp; Press</option>
+        <option value="gallery">🖼 Photo Gallery</option>
+        <option value="video">▶️ Video</option>
+      </select>
+    </div>
+
+    <div class="mfield"><label>Title *</label><input type="text" id="med-title" placeholder="Headline / caption"/></div>
+
+    <div class="mfield" id="med-row-body"><label>Description</label><textarea id="med-body" placeholder="Short description or excerpt…"></textarea></div>
+
+    <div class="mfield" id="med-row-image">
+      <label id="med-image-label">Photo</label>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div id="med-image-preview-wrap" style="width:72px;height:72px;border-radius:8px;overflow:hidden;background:var(--gold-pale, #f3ecd8);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border)">
+          <img id="med-image-preview" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none"/>
+          <span id="med-image-placeholder" style="font-size:11px;color:var(--muted);text-align:center;padding:4px">No photo</span>
+        </div>
+        <div style="flex:1">
+          <input type="file" id="med-image-file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="onMediaImagePicked(event)"/>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, WEBP or GIF, up to 8MB. If no photo is uploaded, the emoji icon is used instead.</div>
+          <button type="button" class="btn-sm btn-outline" id="med-image-remove-btn" style="margin-top:6px;display:none" onclick="removeMediaImage()">Remove Photo</button>
+          <span id="med-image-status" style="font-size:11px;color:var(--muted);margin-left:6px"></span>
+        </div>
+      </div>
+      <input type="hidden" id="med-image-url" value=""/>
+    </div>
+
+    <div class="mfield" id="med-row-video">
+      <label>Video File</label>
+      <div>
+        <input type="file" id="med-video-file" accept="video/mp4,video/webm,video/ogg,video/quicktime" onchange="onMediaVideoPicked(event)"/>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">MP4, WEBM, OGG, or MOV, up to 200MB.</div>
+        <div id="med-video-uploaded-info" style="display:none;margin-top:6px;align-items:center;gap:8px">
+          <span style="font-size:12px;color:var(--text)">🎬 Video file attached</span>
+          <button type="button" class="btn-sm btn-outline" onclick="removeMediaVideo()">Remove</button>
+        </div>
+        <span id="med-video-status" style="font-size:11px;color:var(--muted);margin-left:6px"></span>
+      </div>
+      <input type="hidden" id="med-video-uploaded-url" value=""/>
+      <div style="margin-top:10px">
+        <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">— OR — Paste an external video link (YouTube, Vimeo, or direct .mp4 URL)</label>
+        <input type="text" id="med-video-external" placeholder="https://www.youtube.com/watch?v=..." oninput="onMediaVideoExternalChange()"/>
+      </div>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield" id="med-row-icon"><label>Icon (emoji fallback)</label><input type="text" id="med-icon" placeholder="e.g. 🚨" maxlength="4"/></div>
+      <div class="mfield" id="med-row-style"><label>Color / Category Style</label>
+        <select id="med-style">
+          <option value="blue">Blue</option>
+          <option value="gold">Gold</option>
+          <option value="green">Green</option>
+          <option value="red">Red</option>
+          <option value="health">Health</option>
+          <option value="award">Award</option>
+          <option value="community">Community</option>
+          <option value="research">Research</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield" id="med-row-tag"><label>Tag / Badge Text</label><input type="text" id="med-tag" placeholder="e.g. New, Recurring, Award"/></div>
+      <div class="mfield" id="med-row-tagstyle"><label>Badge Style</label>
+        <select id="med-tagstyle">
+          <option value="new">New</option>
+          <option value="event">Event</option>
+          <option value="notice">Notice</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield" id="med-row-date"><label>Date Label</label><input type="text" id="med-date" placeholder="e.g. June 1, 2025"/></div>
+      <div class="mfield" id="med-row-duration"><label>Video Duration</label><input type="text" id="med-duration" placeholder="e.g. 4:32"/></div>
+    </div>
+
+    <div class="mrow">
+      <div class="mfield"><label>Status</label>
+        <select id="med-status">
+          <option value="Published">Published</option>
+          <option value="Draft">Draft (hidden from site)</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Display Order</label><input type="number" id="med-order" value="0" title="Higher numbers show first"/></div>
+    </div>
+
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveMedia()" id="med-save-btn">Add Item</button>
+  </div>
+</div>
+
+<!-- Add Appointment Modal -->
+<div class="modal-overlay" id="add-appt-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('add-appt-modal')">✕</button>
+    <div class="modal-title">Add Manual Appointment</div>
+    <div class="modal-sub">Record a walk-in or phone booking.</div>
+    <div class="mrow">
+      <div class="mfield"><label>Patient Name *</label><input type="text" id="ma-name" placeholder="Full name"/></div>
+      <div class="mfield"><label>Phone *</label><input type="text" id="ma-phone" placeholder="Phone number"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Department *</label>
+        <select id="ma-dept">
+          <option value="">Select</option>
+          <option>General Medicine</option><option>Cardiology</option><option>Neurology</option>
+          <option>Paediatrics</option><option>Orthopaedics</option><option>Maternity &amp; Gynaecology</option>
+          <option>Oncology</option><option>Ophthalmology</option><option>Dental</option>
+          <option>Physiotherapy</option><option>Radiology</option><option>Psychiatry</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Date *</label><input type="date" id="ma-date"/></div>
+    </div>
+    <div class="mrow">
+      <div class="mfield"><label>Consult Type</label>
+        <select id="ma-type">
+          <option>In-Person Consultation</option><option>Telemedicine Consultation</option>
+          <option>Home Visit</option><option>Follow-Up Appointment</option>
+        </select>
+      </div>
+      <div class="mfield"><label>Status</label>
+        <select id="ma-status">
+          <option>Pending</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div class="mfield"><label>Notes / Symptoms</label><textarea id="ma-notes" placeholder="Optional notes…"></textarea></div>
+    <button class="btn-sm btn-primary" style="width:100%;padding:12px" onclick="saveManualAppt()">Save Appointment</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:none">
+  <div id="toast-inner" style="padding:13px 20px;border-radius:var(--radius);font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);max-width:320px;display:flex;align-items:center;gap:10px"></div>
+</div>
+
+<script src="../shared/api.js"></script>
+
+  <script src="./admin.js"></script>
+</body>
+</html>

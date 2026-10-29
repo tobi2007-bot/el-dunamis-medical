@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./leave-a-review.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave a Review — EL DUNAMIS Medical Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="../home/index.html" class="nav-brand">
+    <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+    <span class="nav-title">EL <span>DUNAMIS</span> <span class="nav-med">MEDICAL CENTRE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../home/index.html#services">Services</a>
+    <a href="../home/index.html#departments">Departments</a>
+    <div class="nav-dropdown" id="doctors-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('doctors-dropdown').classList.toggle('open');">Doctors</a>
+      <div class="dropdown-menu">
+        <a href="../home/index.html#medical-director"><span class="dm-icon">🩺</span><span class="dm-label">Medical Director<small>Leadership & Vision</small></span></a>
+        <a href="../home/index.html#doctors"><span class="dm-icon">👨‍⚕️</span><span class="dm-label">Our Doctors<small>Expert Doctors</small></span></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="clinic-days-dropdown">
+      <a href="#" onclick="event.preventDefault(); document.getElementById('clinic-days-dropdown').classList.toggle('open');">Clinic Days</a>
+      <div class="dropdown-menu">
+        <a href="../home/index.html#immunization"><span class="dm-icon">💉</span><span class="dm-label">Immunization Clinic<small>Every Tuesday</small></span></a>
+        <a href="../home/index.html#antenatal"><span class="dm-icon">🤰</span><span class="dm-label">Antenatal Clinic<small>Every Thursday</small></span></a>
+      </div>
+    </div>
+    <a href="../media/media.html">Media</a>
+    <a href="./leave-a-review.html" class="active">Feedbacks</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-emergency"><div class="emergency-dot"></div> 09024543941</div>
+    <a href="../schedule-a-visit/schedule-a-visit.html" class="nav-cta">Book Appointment</a>
+    <button class="hamburger" id="hamburger-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="../home/index.html#services">Services</a>
+  <a href="../schedule-a-visit/schedule-a-visit.html">Consultation</a>
+  <a href="../home/index.html#departments">Departments</a>
+  <a href="../home/index.html#medical-director">🩺 Medical Director</a>
+  <a href="../home/index.html#doctors">Our Doctors</a>
+  <a href="../home/index.html#immunization">💉 Immunization Clinic — Tuesday</a>
+  <a href="../home/index.html#antenatal">🤰 Antenatal Clinic — Thursday</a>
+  <a href="../media/media.html">📸 Media</a>
+  <a href="./leave-a-review.html" style="color:var(--gold);font-weight:600">📝 Feedbacks</a>
+  <a href="../home/index.html#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Patient Feedback</div>
+    <h1>Share Your <em>Experience</em></h1>
+    <p>Your honest feedback helps us continue improving the care and service we provide to every patient and family.</p>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">✅ Secure & Confidential</div>
+  <div class="trust-item">⏱ Takes under 2 minutes</div>
+  <div class="trust-item">💬 Every review is read by our team</div>
+  <div class="trust-item">🏥 Helps improve patient care</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="review-page">
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div id="form-wrap">
+      <h2>Leave a Review</h2>
+      <p class="form-sub">We value your experience at EL DUNAMIS Medical Centre. Please fill in the form below — all fields marked <span style="color:#C0392B">*</span> are required.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="r-name" placeholder="e.g. Amaka Obi" />
+        </div>
+        <div class="form-group">
+          <label>Phone / Email <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+          <input type="text" id="r-contact" placeholder="For follow-up if needed" />
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-group">
+        <label>Overall Rating <span class="req">*</span></label>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div class="star-row" id="star-row">
+            <span onclick="setRating(1)" title="Poor">★</span>
+            <span onclick="setRating(2)" title="Fair">★</span>
+            <span onclick="setRating(3)" title="Good">★</span>
+            <span onclick="setRating(4)" title="Very Good">★</span>
+            <span onclick="setRating(5)" title="Excellent">★</span>
+          </div>
+          <div class="rating-label" id="rating-label">Tap to rate</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Your Experience <span class="req">*</span></label>
+        <textarea id="r-text" placeholder="Tell us about your visit — the care you received, how staff treated you, what you loved, or what we can do better..." oninput="updateCounter(this)"></textarea>
+        <div class="char-counter"><span id="char-count">0</span> / 600 characters</div>
+      </div>
+
+      <div class="form-group">
+        <label>Would you recommend us?</label>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;cursor:pointer">
+            <input type="radio" name="recommend" value="yes" style="width:auto;padding:0;border:none;background:none" /> Yes, definitely
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;cursor:pointer">
+            <input type="radio" name="recommend" value="maybe" style="width:auto;padding:0;border:none;background:none" /> Maybe
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;cursor:pointer">
+            <input type="radio" name="recommend" value="no" style="width:auto;padding:0;border:none;background:none" /> Not at this time
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-submit" onclick="submitReview()">
+        <span>✍️</span> Submit Review
+      </button>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="success-state">
+      <div class="success-icon">🎉</div>
+      <h3>Thank You!</h3>
+      <p>Your feedback has been received. We truly appreciate you taking the time to share your experience — it means a great deal to our team and will help us serve you and others even better.</p>
+      <a href="../home/index.html#testimonials" class="btn-back">← Back to Feedback Page</a>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="info-card">
+      <div class="overall-score">
+        <div class="big-score" id="rating-score-display">4.9</div>
+        <div class="big-stars">★★★★★</div>
+        <div class="big-label" id="rating-count-display">Based on 340+ patient reviews</div>
+      </div>
+      <div class="form-divider" style="margin:16px 0"></div>
+      <h4>Rating Breakdown</h4>
+      <div class="rating-breakdown">
+        <div class="rating-row">
+          <span class="stars-label">5</span>
+          <div class="rating-bar-wrap"><div class="rating-bar-fill" id="rating-bar-5" style="width:82%"></div></div>
+          <span class="pct" id="rating-pct-5-display">82%</span>
+        </div>
+        <div class="rating-row">
+          <span class="stars-label">4</span>
+          <div class="rating-bar-wrap"><div class="rating-bar-fill" id="rating-bar-4" style="width:12%"></div></div>
+          <span class="pct" id="rating-pct-4-display">12%</span>
+        </div>
+        <div class="rating-row">
+          <span class="stars-label">3</span>
+          <div class="rating-bar-wrap"><div class="rating-bar-fill" id="rating-bar-3" style="width:4%"></div></div>
+          <span class="pct" id="rating-pct-3-display">4%</span>
+        </div>
+        <div class="rating-row">
+          <span class="stars-label">2</span>
+          <div class="rating-bar-wrap"><div class="rating-bar-fill" id="rating-bar-2" style="width:1%"></div></div>
+          <span class="pct" id="rating-pct-2-display">1%</span>
+        </div>
+        <div class="rating-row">
+          <span class="stars-label">1</span>
+          <div class="rating-bar-wrap"><div class="rating-bar-fill" id="rating-bar-1" style="width:1%"></div></div>
+          <span class="pct" id="rating-pct-1-display">1%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h4>Tips for a Great Review</h4>
+      <div class="tip-list">
+        <div class="tip-item"><span class="tip-icon">💡</span> Be specific — mention the department, doctor, or service you experienced.</div>
+        <div class="tip-item"><span class="tip-icon">🤝</span> Share both positives and suggestions — honest feedback is most helpful.</div>
+        <div class="tip-item"><span class="tip-icon">🔒</span> You don't need to share personal medical details — focus on the experience.</div>
+        <div class="tip-item"><span class="tip-icon">📋</span> Reviews help future patients choose confidently and help us serve better.</div>
+      </div>
+    </div>
+
+    <div class="privacy-note">
+      <strong>🔒 Your Privacy Matters</strong>
+      Your review is handled with complete discretion. Contact details, if provided, are used only for follow-up and are never shared publicly. Reviews may be displayed anonymously on our website.
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+      <div>
+        <div class="footer-brand-name">EL <span>DUNAMIS</span></div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase">MEDICAL CENTRE</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="../home/index.html">Home</a>
+      <a href="../home/index.html#services">Services</a>
+      <a href="../home/index.html#doctors">Doctors</a>
+      <a href="../schedule-a-visit/schedule-a-visit.html">Book Appointment</a>
+      <a href="../media/media.html">Media</a>
+      <a href="../home/index.html#contact">Contact</a>
+    </div>
+    <div class="footer-social" style="display:flex;gap:16px;">
+      <a href="https://www.facebook.com/share/1AzaiMvaR2/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">📘 Facebook</a>
+      <a href="https://www.instagram.com/eldunamismedicalcentre?igsh=YW8yNGtkeDE4Y3dh" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">📸 Instagram</a>
+      <a href="https://x.com/eldunamiscentre?t=HFT5cKLT39-XoeuHvAwboA&amp;s=09" target="_blank" rel="noopener" aria-label="Twitter" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;">🐦 Twitter</a>
+    </div>
+    <div class="footer-copy">© <span id="copyright-year">2025</span> EL DUNAMIS Medical Centre</div>
+  </div>
+</footer>
+
+<script src="../shared/api.js"></script>
+
+  <script src="./leave-a-review.js"></script>
+</body>
+</html>

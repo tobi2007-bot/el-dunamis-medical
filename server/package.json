@@ -1,0 +1,22 @@
+{
+  "name": "el dunamis-backend",
+  "version": "1.0.0",
+  "description": "Backend API for the EL DUNAMIS Medical Centre website",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.4.0"
+  }
+}

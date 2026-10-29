@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./schedule-a-visit.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schedule a Visit — EL DUNAMIS Medical Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+
+<nav>
+  <a href="../home/index.html" class="nav-brand">
+    <img src="../images/logo.png" alt="EL DUNAMIS Logo" style="height:52px;width:52px;object-fit:contain;flex-shrink:0;border-radius:50%;border:2px solid var(--gold);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.18);padding:3px;" />
+    <span class="nav-title">EL <span>DUNAMIS</span> <span class="nav-med">MEDICAL CENTRE</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../home/index.html#services">Services</a>
+    <a href="../home/index.html#departments">Departments</a>
+    <a href="../home/index.html#doctors">Doctors</a>
+    <a href="../leave-a-review/leave-a-review.html">Feedbacks</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-emergency"><div class="emergency-dot"></div> 09024543941</div>
+    <a href="./schedule-a-visit.html" class="nav-cta" style="background:var(--gold-light)">Book Appointment</a>
+    <button class="hamburger" id="hamburger-btn" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="../home/index.html#services">Services</a>
+  <a href="./schedule-a-visit.html">Consultation</a>
+  <a href="../home/index.html#departments">Departments</a>
+  <a href="../home/index.html#doctors">Our Doctors</a>
+  <a href="../home/index.html#about">About</a>
+  <a href="../careers/careers.html">Careers</a>
+  <a href="../home/index.html#contact">Contact</a>
+  <a href="../leave-a-review/leave-a-review.html">📝 Feedbacks</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="label">📅 Schedule a Visit</div>
+  <h1>Book Your <em>Consultation</em> Today</h1>
+  <p>Choose the consultation type that best fits your needs. Our specialists are available in-person and online.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="schedule-wrap">
+
+  <!-- LEFT: Visit types -->
+  <div>
+    <div class="consult-section-label">Choose Your Visit Type</div>
+    <h2 class="consult-section-title">How Would You Like to Be Seen?</h2>
+    <p class="consult-section-sub">Select the option that works best for you and your circumstances. All consultations are handled by qualified specialists.</p>
+    <div class="consult-types">
+      <div class="consult-type active" onclick="selectType(this,'In-Person Consultation')">
+        <div class="consult-type-header">
+          <div class="consult-type-icon">🏥</div>
+          <h4>In-Person Visit</h4>
+        </div>
+        <p>Meet your specialist face-to-face at our facility for a thorough physical examination.</p>
+      </div>
+      <div class="consult-type" onclick="selectType(this,'Telemedicine Consultation')">
+        <div class="consult-type-header">
+          <div class="consult-type-icon">💻</div>
+          <h4>Telemedicine</h4>
+        </div>
+        <p>Consult with our doctors from the comfort of your home via secure video call.</p>
+      </div>
+      <div class="consult-type" onclick="selectType(this,'Home Visit')">
+        <div class="consult-type-header">
+          <div class="consult-type-icon">🏠</div>
+          <h4>Home Visit</h4>
+        </div>
+        <p>Our doctors come to you — available for patients who are unable to travel.</p>
+      </div>
+      <div class="consult-type" onclick="selectType(this,'Follow-Up Appointment')">
+        <div class="consult-type-header">
+          <div class="consult-type-icon">🔄</div>
+          <h4>Follow-Up Appointment</h4>
+        </div>
+        <p>Schedule a follow-up with your existing doctor to review progress and treatment plans.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="consult-form">
+    <div class="form-title">Request an Appointment</div>
+    <div class="form-sub">Fill in your details and we'll confirm within 2 hours.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name *</label>
+        <input type="text" id="fname" placeholder="John" />
+      </div>
+      <div class="form-group">
+        <label>Last Name *</label>
+        <input type="text" id="lname" placeholder="Doe" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="phone" placeholder="09024543941" />
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="john@email.com" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Department *</label>
+        <select id="department">
+          <option value="">Select department</option>
+          <option>General Medicine</option>
+          <option>Cardiology</option>
+          <option>Neurology</option>
+          <option>Paediatrics</option>
+          <option>Orthopaedics</option>
+          <option>Maternity & Gynaecology</option>
+          <option>Oncology</option>
+          <option>Ophthalmology</option>
+          <option>Dental</option>
+          <option>Physiotherapy</option>
+          <option>Dermatology</option>
+          <option>Urology</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Date *</label>
+        <input type="date" id="apptdate" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Consultation Type</label>
+      <input type="text" id="consult-type-input" value="In-Person Consultation" readonly style="background:#f0f0f0;cursor:default" />
+    </div>
+    <div class="form-group">
+      <label>Brief Description of Symptoms</label>
+      <textarea id="symptoms" placeholder="Briefly describe your main concern or reason for the visit..."></textarea>
+    </div>
+    <button class="form-submit" onclick="submitForm()">Book Appointment</button>
+    <p class="form-note">🔒 Your information is private and secure. No spam, ever.</p>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-success">
+      <div class="check">✅</div>
+      <h3>Appointment Requested!</h3>
+      <p id="modal-ai-note">Thank you! We've received your request and will confirm your appointment within 2 hours via phone or email. Please check your messages.</p>
+      <a href="../home/index.html" class="btn-primary" style="display:inline-block;margin-top:8px">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<script src="../shared/api.js"></script>
+
+  <script src="./schedule-a-visit.js"></script>
+</body>
+</html>
